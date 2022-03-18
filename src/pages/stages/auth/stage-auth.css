@@ -1,0 +1,19 @@
+.account-block {
+  padding: 5px;
+  background-image: url(https://www.topnet.tn/u_p_l_d/offres/all-in-one_88_06873360015480853375c45e859a7d47.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  position: relative;
+}
+
+.form__register .form-control {
+  padding: 10px;
+}
+
+form .form-label,
+form label {
+  margin: 10px 0;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
