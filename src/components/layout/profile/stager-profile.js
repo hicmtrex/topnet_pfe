@@ -6,7 +6,6 @@ import './user-profile.css';
 const StagerProfile = ({ userInfo }) => {
   return (
     <div className='main-body'>
-      <h1>Stages profile</h1>
       <Row className=' gutters-sm'>
         <Col md={4} className='mb-3'>
           <Card>
