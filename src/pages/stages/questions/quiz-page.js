@@ -2,8 +2,12 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Button, Form, Row, Col } from 'react-bootstrap';
 import Layout from '../../../components/layout/layout';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const QuizPage = () => {
+  const { userInfo } = useSelector((state) => state.stageLogin);
+  const navigate = useNavigate();
   const [questions, setQuestions] = useState([]);
   const [userAnswer, setUserAnswer] = useState([]);
   const [value, setValue] = useState('');
@@ -16,8 +20,9 @@ const QuizPage = () => {
     setQuestions(data);
   };
   useEffect(() => {
+    if (!userInfo) return navigate('/stages/auth-login');
     getQuestions();
-  }, []);
+  }, [userInfo]);
 
   useEffect(() => {
     const done = setInterval(() => {

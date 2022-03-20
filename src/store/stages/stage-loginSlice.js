@@ -41,7 +41,7 @@ const loginStageSlice = createSlice({
     stageLogout: (state) => {
       state.userInfo = null;
       localStorage.removeItem(LOCAL_STORAGE.auth);
-      document.location.href = '/';
+      localStorage.removeItem(LOCAL_STORAGE.admin);
     },
   },
   extraReducers: (builder) => {

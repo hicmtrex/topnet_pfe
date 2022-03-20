@@ -1,19 +1,20 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import toast from 'react-hot-toast';
-import adminAxios, { setError } from '../../../utils/help-api';
+import adminAxios, { setError } from '../../utils/help-api';
 
 const initialState = {
   loading: false,
-  stage: null,
+  success: false,
   error: null,
 };
 
-export const getStageDetail = createAsyncThunk(
-  'get/stage:id',
-  async (id, thunkAPI) => {
+export const updateUser = createAsyncThunk(
+  'put/users',
+  async (user, thunkAPI) => {
     try {
-      const res = await adminAxios.get(`/stages/${id}`);
+      const res = await adminAxios.put(`/admin/users/${user.id}`, user);
       if (res.data) {
+        toast.success('user has been updated');
         return res.data;
       }
     } catch (error) {
@@ -24,24 +25,24 @@ export const getStageDetail = createAsyncThunk(
   }
 );
 
-const stageDetailSlice = createSlice({
-  name: 'stages-detail',
+const updateUserSlice = createSlice({
+  name: 'update-user',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(getStageDetail.pending, (state) => {
+      .addCase(updateUser.pending, (state) => {
         state.loading = true;
       })
-      .addCase(getStageDetail.fulfilled, (state, action) => {
+      .addCase(updateUser.fulfilled, (state) => {
         state.loading = false;
-        state.stage = action.payload;
+        state.success = !state.success;
       })
-      .addCase(getStageDetail.rejected, (state, action) => {
+      .addCase(updateUser.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       });
   },
 });
 
-export default stageDetailSlice;
+export default updateUserSlice;

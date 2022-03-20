@@ -94,14 +94,14 @@ const Sidebar = () => {
                 <FaUser className='me-2' size={'1.5rem'} /> Strategies
               </Link>
             </li>
-            <li className='nav-item  '>
+            {/* <li className='nav-item  '>
               <Link className='nav-link p-5' to='#'>
                 <FaUserCog className='me-2' size={'1.5rem'} /> Strategies
                 <span className='badge bg-soft-primary text-primary rounded-pill d-inline-flex align-items-center ms-auto'>
                   6
                 </span>
               </Link>
-            </li>
+            </li> */}
           </ul>
 
           <hr className='navbar-divider my-5 opacity-20' />

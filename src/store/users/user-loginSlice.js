@@ -5,8 +5,8 @@ import { LOCAL_STORAGE, setError } from '../../utils/help-api';
 
 const initialState = {
   loading: false,
-  userInfo: localStorage.getItem(LOCAL_STORAGE.auth)
-    ? JSON.parse(localStorage.getItem(LOCAL_STORAGE.auth))
+  userInfo: localStorage.getItem(LOCAL_STORAGE.admin)
+    ? JSON.parse(localStorage.getItem(LOCAL_STORAGE.admin))
     : null,
   error: null,
 };
@@ -22,7 +22,7 @@ export const userLogin = createAsyncThunk(
       });
       if (res.data) {
         toast.success(`Welcome ${res.data.user.first_name}`);
-        localStorage.setItem(LOCAL_STORAGE.auth, JSON.stringify(res.data));
+        localStorage.setItem(LOCAL_STORAGE.admin, JSON.stringify(res.data));
         return res.data;
       }
     } catch (error) {
@@ -38,8 +38,9 @@ const loginUserSlice = createSlice({
   initialState,
   reducers: {
     userLogout: (state) => {
-      localStorage.removeItem(LOCAL_STORAGE.auth);
       state.userInfo = null;
+      localStorage.removeItem(LOCAL_STORAGE.auth);
+      localStorage.removeItem(LOCAL_STORAGE.admin);
     },
   },
   extraReducers: (builder) => {

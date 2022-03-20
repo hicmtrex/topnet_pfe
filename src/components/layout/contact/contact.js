@@ -13,9 +13,7 @@ const Contact = () => {
             </div>
           </div>
           <div className='col-md-6'>
-            {/* Do you need a working HTML contact-form script?
-                
-                Please visit https://templatemo.com/contact page */}
+    
             <form id='contact'>
               <div className='row'>
                 <div className='col-md-6'>

@@ -5,11 +5,22 @@ import { FaUserAlt } from 'react-icons/fa';
 import { stageLogout } from '../../../store/stages/stage-loginSlice';
 import './navbar.css';
 import { userLogout } from '../../../store/users/user-loginSlice';
+import Loader from '../../UI/loader';
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
   const { userInfo } = useSelector((state) => state.stageLogin);
-  const { userInfo: admin } = useSelector((state) => state.userLogin);
+  const { userInfo: admin, loading } = useSelector((state) => state.userLogin);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const onLogout = () => {
+    dispatch(stageLogout());
+    dispatch(userLogout());
+    navigate('/stages/auth-login');
+  };
+
+  if (loading) return <Loader />;
   return (
     <header>
       <Navbar
@@ -45,27 +56,23 @@ const Header = () => {
                   }
                   id='collasible-nav-dropdown'
                 >
-                  {admin?.user.coordinator && (
+                  {admin?.user.coordinator ||
+                  admin?.user.service_rh ||
+                  userInfo?.user.service_rh ||
+                  userInfo?.user.service_rh ? (
                     <LinkContainer to='/admin/dashboard'>
                       <NavDropdown.Item className='text-dark'>
                         Dashboard
                       </NavDropdown.Item>
                     </LinkContainer>
-                  )}
+                  ) : null}
                   <LinkContainer to='/stages/profile'>
                     <NavDropdown.Item className='text-dark'>
                       Profile
                     </NavDropdown.Item>
                   </LinkContainer>
-                  {admin ? (
-                    <NavDropdown.Item onClick={() => dispatch(userLogout())}>
-                      Logout
-                    </NavDropdown.Item>
-                  ) : (
-                    <NavDropdown.Item onClick={() => dispatch(stageLogout())}>
-                      Logout
-                    </NavDropdown.Item>
-                  )}
+
+                  <NavDropdown.Item onClick={onLogout}>Logout</NavDropdown.Item>
                 </NavDropdown>
                 <a href='#' className='text-white mx-2'>
                   <FaUserAlt size={'1.3rem'} />

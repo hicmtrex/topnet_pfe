@@ -11,10 +11,11 @@ const StageList = () => {
   const dispatch = useDispatch();
   const { users, loading } = useSelector((state) => state.usersList);
   const { success } = useSelector((state) => state.addUser);
+  const { success: successUpdate } = useSelector((state) => state.usersUpdate);
 
   useEffect(() => {
     dispatch(getUsersList());
-  }, [dispatch, success]);
+  }, [dispatch, success, successUpdate]);
 
   return (
     <DashboardLayout>

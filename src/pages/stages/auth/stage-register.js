@@ -11,6 +11,7 @@ import { stagerRegister } from '../../../store/stages/stage-register';
 
 const StageRegister = () => {
   const { userInfo } = useSelector((state) => state.stageLogin);
+  const { success } = useSelector((state) => state.stageRegister);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -66,7 +67,10 @@ const StageRegister = () => {
     if (userInfo) {
       navigate('/');
     }
-  }, [userInfo]);
+    if (success) {
+      navigate('/stages/auth-login');
+    }
+  }, [userInfo, success]);
 
   return (
     <Layout>
@@ -207,13 +211,31 @@ const StageRegister = () => {
                             name='domaine'
                             required
                           >
-                            <option value='informatique'>Informatique</option>
-                            <option value='télécommunications'>
-                              Télécommunications
+                            <option value=' Developpeur web'>
+                              Développeur web
                             </option>
-                            <option value='business intelligence'>
-                              Business intelligence
+                            <option value='Technicien en informatique'>
+                              Technicien en informatique
                             </option>
+                            <option value='Reseaux et telecommunications'>
+                              Reseaux et Telecommunications
+                            </option>
+                            <option value='Sécurité du réseau'>
+                              Sécurité du réseau
+                            </option>
+                            <option value='Data analyst'>Data analyst</option>
+                            <option value=' Developpeur web'>
+                              Développeur Mobile
+                            </option>
+                            <option value=' Ux/Ui Design'>Ux/Ui Design</option>
+                            <option value=' Finance Sara Management'>
+                              Finance Management
+                            </option>
+                            <option value='Administration de server '>
+                              Administration de server
+                            </option>
+
+                            <option value='Marketing '>Mrketing</option>
                           </Form.Select>
                         </Form.Group>
                       </Col>

@@ -7,15 +7,15 @@ export const stagerRegister = createAsyncThunk(
   'stages/register',
   async (user, thunkAPI) => {
     try {
-      const { data } = await axios.post('/api/stages/register', user, {
+      const res = await axios.post('/api/stages/register', user, {
         headers: {
           Accpet: 'application/json',
         },
       });
-
-      toast.success(`You have been registered`);
-      document.location.href = '/stages/auth-login';
-      return data;
+      if (res.data) {
+        toast.success(`You have been registered`);
+        return res.data;
+      }
     } catch (error) {
       const message = setError(error);
       toast.error(message);

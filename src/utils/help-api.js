@@ -1,5 +1,17 @@
 import axios from 'axios';
 
+export const roleCheck = (u) => {
+  if (u.coordinator === true) {
+    return 'Coordinator';
+  } else if (u.service_rh === true) {
+    return 'Service Rh';
+  } else if (u.encadrant === true) {
+    return 'Encadrant ';
+  } else {
+    return 'Stagiaire';
+  }
+};
+
 export const setError = (error) => {
   const message =
     (error.response && error.response.data && error.response.data.message) ||
@@ -23,6 +35,7 @@ export const authorizationProvider = (store) => {
 
 export const LOCAL_STORAGE = {
   auth: 'sarapfe-auth-token',
+  admin: 'sarapfe-admin-token',
 };
 
 export default adminAxios;

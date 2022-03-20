@@ -18,7 +18,7 @@ const StageLogin = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const loginHandler = (e) => {
+  const loginHandler = (e) => {           
     e.preventDefault();
     dispatch(stagerLogin({ email, password }));
   };
@@ -26,7 +26,7 @@ const StageLogin = () => {
     if (userInfo?.user.status === false) {
       localStorage.removeItem(LOCAL_STORAGE.auth);
       return toast.error('Your Account is deactivated!');
-    } else if (userInfo?.user.status) {
+    } else if (userInfo?.user.status === true) {
       navigate('/');
     }
   }, [userInfo, navigate]);

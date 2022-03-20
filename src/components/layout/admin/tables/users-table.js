@@ -4,9 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { FaTimes } from 'react-icons/fa';
 import { BsTrash } from 'react-icons/bs';
-import { AiOutlineMail, AiFillPhone } from 'react-icons/ai';
+import { AiOutlineMail } from 'react-icons/ai';
 import { HiIdentification } from 'react-icons/hi';
-import { updateStage } from '../../../../store/stages/admin/update-stageSlice';
+import { updateUser } from '../../../../store/users/update-userSlice';
+import { roleCheck } from '../../../../utils/help-api';
 
 const UsersList = ({ user }) => {
   const [edit, setEdit] = useState(false);
@@ -15,28 +16,17 @@ const UsersList = ({ user }) => {
   const dispatch = useDispatch();
   const [status, setStatus] = useState(user.status ? 'Active' : 'Deactive');
 
-  const roleCheck = (u) => {
-    if (u.coordinator) {
-      return 'Coordinator';
-    } else if (u.service_rh) {
-      return 'Service Rh';
-    } else if (u.encadrant) {
-      return 'Encadrant ';
-    } else {
-      return 'Stagiaire';
-    }
-  };
-
   const onDelete = (i) => {
     if (window.confirm('Are you sure?')) {
     }
   };
-  const onUpdate = () => {
+  const onUpdate = (i) => {
     dispatch(
-      updateStage({
-        id: user._id,
-        coordinator: role === 'Coordinator' ? true : false,
-        service_rh: role === 'Service Rh' ? true : false,
+      updateUser({
+        id: i,
+        coordinator: role === 'coordinator' ? Boolean(true) : Boolean(false),
+        service_rh: role === 'service_rh' ? Boolean(true) : Boolean(false),
+        encadrant: role === 'encadrant' ? Boolean(true) : Boolean(false),
         status: status === 'Active' ? true : false,
       })
     );
@@ -74,7 +64,7 @@ const UsersList = ({ user }) => {
               onChange={(e) => setRole(e.target.value)}
               value={role}
             >
-              <option value='Encadrant'>Encadrant</option>
+              <option value='encadrant'>Encadrant</option>
               <option value='service_rh'>Service Rh</option>
               <option value='coordinator'>Coondinator</option>
             </FormSelect>
@@ -115,7 +105,7 @@ const UsersList = ({ user }) => {
           />
         ) : (
           <Link
-            to={`/admin/stages/${user._id}`}
+            to={`/admin/users/${user._id}`}
             className='  btn-sm  btn-neutral text-primary border'
           >
             View
@@ -126,7 +116,7 @@ const UsersList = ({ user }) => {
             {edit ? (
               <Button
                 className=' btn-sm  btn-neutral text-primary mx-2'
-                onClick={onUpdate}
+                onClick={() => onUpdate(user._id)}
               >
                 Edit
               </Button>

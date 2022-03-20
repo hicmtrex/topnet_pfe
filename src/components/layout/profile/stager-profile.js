@@ -1,14 +1,12 @@
 import React from 'react';
 import { Card, Col, Row, Image, ListGroup } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { roleCheck } from '../../../utils/help-api';
-
 import './user-profile.css';
 
-const UserProfile = ({ userInfo }) => {
+const StagerProfile = ({ userInfo }) => {
   return (
     <div className='main-body'>
-      <h1>Users</h1>
+      <h1>Stages profile</h1>
       <Row className=' gutters-sm'>
         <Col md={4} className='mb-3'>
           <Card>
@@ -22,13 +20,11 @@ const UserProfile = ({ userInfo }) => {
                 />
                 <div className='mt-3'>
                   <h4>
-                    {userInfo?.user.first_name} {userInfo?.user.last_name}
+                    {userInfo.user.first_name} {userInfo.user.last_name}
                   </h4>
-                  <p className='text-secondary mb-1'>
-                    {roleCheck(userInfo?.user)}
-                  </p>
+                  <p className='text-secondary mb-1'>stagiaire</p>
                   <p className='text-muted font-size-sm'>
-                    {userInfo?.user.email}
+                    {userInfo.user.email}
                   </p>
                 </div>
               </div>
@@ -36,19 +32,19 @@ const UserProfile = ({ userInfo }) => {
                 <ListGroup.Item as='h6'>
                   Memeber Since:
                   <span className='float-end'>
-                    {userInfo?.user.created_at.substring(0, 10)}
+                    {userInfo.user.created_at.substring(0, 10)}
                   </span>
                 </ListGroup.Item>
                 <ListGroup.Item as='h6'>
                   Least Update:
                   <span className='float-end'>
-                    {userInfo?.user.updated_at.substring(0, 10)}
+                    {userInfo.user.updated_at.substring(0, 10)}
                   </span>
                 </ListGroup.Item>
                 <ListGroup.Item>
                   <Link
                     className='btn btn-dark col-12'
-                    to={`/users/update-userprofile/${userInfo?.user._id}`}
+                    to={`/users/update-stageprofile/${userInfo.user._id}`}
                   >
                     Edit Profile
                   </Link>
@@ -65,7 +61,7 @@ const UserProfile = ({ userInfo }) => {
                   <h6 className='mb-0'>Full Name</h6>
                 </div>
                 <Col sm={9}>
-                  {userInfo?.user.first_name} {userInfo?.user.last_name}
+                  {userInfo.user.first_name} {userInfo.user.last_name}
                 </Col>
               </div>
               <hr />
@@ -73,34 +69,43 @@ const UserProfile = ({ userInfo }) => {
                 <Col sm={3} className='col-sm-3'>
                   <h6 className='mb-0'>Email</h6>
                 </Col>
-                <Col sm={9}>{userInfo?.user.email}</Col>
+                <Col sm={9}>{userInfo.user.email}</Col>
               </Row>
               <hr />
               <Row>
                 <Col sm={3} className='col-sm-3'>
-                  <h6 className='mb-0'>Role</h6>
+                  <h6 className='mb-0'>Phone</h6>
                 </Col>
-                <Col sm={9}>{roleCheck(userInfo?.user)}</Col>
+                <Col sm={9}>{userInfo.user.phone}</Col>
               </Row>
               <hr />
-
-              {userInfo?.user.domain && (
-                <Row>
-                  <Col sm={3} className='col-sm-3'>
-                    <h6 className='mb-0'>Domaine</h6>
-                  </Col>
-                  <Col sm={9}>{userInfo?.user.domaine}</Col>
-                </Row>
-              )}
-
+              <Row>
+                <Col sm={3} className='col-sm-3'>
+                  <h6 className='mb-0'>Domaine</h6>
+                </Col>
+                <Col sm={9}>{userInfo.user.domaine}</Col>
+              </Row>
               <hr />
               <Row>
                 <Col sm={3} className='col-sm-3'>
                   <h6 className='mb-0'>Cin</h6>
                 </Col>
-                <Col sm={9}>{userInfo?.user.cin}</Col>
+                <Col sm={9}>{userInfo.user.cin}</Col>
               </Row>
               <hr />
+              <Row>
+                <Col sm={3} className='col-sm-3'>
+                  <h6 className='mb-0'>Niveau</h6>
+                </Col>
+                <Col sm={9}>{userInfo.user.niveau}</Col>
+              </Row>
+              <hr />
+              <Row>
+                <Col sm={3} className='col-sm-3'>
+                  <h6 className='mb-0'>Passport</h6>
+                </Col>
+                <Col sm={9}>{userInfo.user.passport}</Col>
+              </Row>
             </div>
           </div>
         </Col>
@@ -176,4 +181,4 @@ const UserProfile = ({ userInfo }) => {
   );
 };
 
-export default UserProfile;
+export default StagerProfile;

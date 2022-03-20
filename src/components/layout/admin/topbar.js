@@ -20,13 +20,7 @@ const Topbar = () => {
             <div className='col-sm-6 col-12 text-sm-end'>
               <div className=' text-white'>
                 <Button
-                  style={{
-                    cursor:
-                      !userInfo.user.coordinator === 1
-                        ? 'not-allowed'
-                        : 'pointer',
-                  }}
-                  disabled={!userInfo.user.coordinator === 1}
+                  disabled={!userInfo.user.coordinator}
                   onClick={() => navigate('/admin/add-user')}
                   className='m-3'
                 >
