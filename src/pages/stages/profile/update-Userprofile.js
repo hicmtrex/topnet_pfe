@@ -14,7 +14,7 @@ const UpdateUserProfile = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const dispatch = useDispatch();
-  const { user, loading } = useSelector((state) => state.userDetail);
+  const { loading } = useSelector((state) => state.userDetail);
   const { userInfo } = useSelector((state) => state.userLogin);
   const [firstName, setFirstName] = useState(userInfo?.user.first_name);
   const [lastName, setLastName] = useState(userInfo?.user.last_name);
@@ -63,7 +63,7 @@ const UpdateUserProfile = () => {
         <Loader />
       ) : (
         <Row
-          className=' mt-2 rounded'
+          className=' mt-2 rounded p-5'
           style={{
             backgroundColor: '  rgba(22, 34, 57, 0.95)',
             color: '#fff',
@@ -103,7 +103,10 @@ const UpdateUserProfile = () => {
                   JPG or PNG no larger than 5 MB
                 </div>
 
-                <input className='btn btn-primary' type='file' />
+                <Form.Control
+                  className='btn btn-primary col-2 col-md-2 '
+                  type='file'
+                />
               </Card.Body>
             </Card>
           </Col>
@@ -207,12 +210,31 @@ const UpdateUserProfile = () => {
                             value={domaine}
                             required
                           >
-                            <option value='btp'>Btp</option>
-                            <option value='bac'>Bac</option>
-                            <option value='bts'>Bts</option>
-                            <option value='licence'>Licence</option>
-                            <option value='ingénierie'>Ingénierie</option>
-                            <option value='master'>Master</option>
+                            <option value=' Developpeur web'>
+                              Développeur web
+                            </option>
+                            <option value='Technicien en informatique'>
+                              Technicien en informatique
+                            </option>
+                            <option value='Reseaux et telecommunications'>
+                              Reseaux et Telecommunications
+                            </option>
+                            <option value='Sécurité du réseau'>
+                              Sécurité du réseau
+                            </option>
+                            <option value='Data analyst'>Data analyst</option>
+                            <option value=' Developpeur web'>
+                              Développeur Mobile
+                            </option>
+                            <option value=' Ux/Ui Design'>Ux/Ui Design</option>
+                            <option value=' Finance Sara Management'>
+                              Finance Management
+                            </option>
+                            <option value='Administration de server '>
+                              Administration de server
+                            </option>
+
+                            <option value='Marketing '>Mrketing</option>
                           </Form.Select>
                         </Form.Group>
                       </Col>

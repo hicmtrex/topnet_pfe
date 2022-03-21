@@ -10,6 +10,7 @@ import { stagerLogin } from '../../../store/stages/stage-loginSlice';
 import './stage-auth.css';
 import { LOCAL_STORAGE } from '../../../utils/help-api';
 import toast from 'react-hot-toast';
+import { GoSignIn } from 'react-icons/go';
 
 const StageLogin = () => {
   const { userInfo } = useSelector((state) => state.stageLogin);
@@ -18,7 +19,7 @@ const StageLogin = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const loginHandler = (e) => {           
+  const loginHandler = (e) => {
     e.preventDefault();
     dispatch(stagerLogin({ email, password }));
   };
@@ -40,7 +41,12 @@ const StageLogin = () => {
               <Col lg={6}>
                 <div className='p-5'>
                   <div className='mb-5'>
-                    <h3 className='h4 font-weight-bold'>Login your account</h3>
+                    <h2 className='font-weight-bold'>
+                      Login your account
+                      <span className='ms-5'>
+                        <GoSignIn size='2.5rem' />
+                      </span>
+                    </h2>
                   </div>
                   <h6 className='h5 mb-0'>Just Do Register.</h6>
                   <p className='text-muted mt-2 mb-5'>
@@ -72,6 +78,12 @@ const StageLogin = () => {
                         />
                         <RiLockPasswordFill size={'2.5rem'} />
                       </div>
+                      <Link
+                        to='/stages/auth-email-confirm'
+                        className='float-end mt-1'
+                      >
+                        forgot password?
+                      </Link>
                     </Form.Group>
                     <Button type='submit' className='col-11 mt-3'>
                       Login

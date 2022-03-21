@@ -10,6 +10,8 @@ import createUserSlice from './users/add-userSlice';
 import usersListSlice from './users/admin/users-list';
 import updateUserSlice from './users/update-userSlice';
 import usersDetailSlice from './users/user-detailSlice';
+import confirmEmailSlice from './stages/confirm-emailSlice';
+import confirmUserSlice from './users/confirm-userSlice';
 
 const reducers = combineReducers({
   stageLogin: loginStageSlice.reducer,
@@ -17,13 +19,16 @@ const reducers = combineReducers({
   //admin
   userLogin: loginUserSlice.reducer,
   stagesList: stagesListSlice.reducer,
-  stageDetail: stageDetailSlice.reducer, 
+  stageDetail: stageDetailSlice.reducer,
   stageUpdate: updateStageSlice.reducer,
   addUser: createUserSlice.reducer,
   //users
   usersList: usersListSlice.reducer,
   usersUpdate: updateUserSlice.reducer,
   userDetail: usersDetailSlice.reducer,
+  //reset password
+  emailConfirm: confirmEmailSlice.reducer,
+  userConfirm: confirmUserSlice.reducer,
 });
 
 const store = configureStore({

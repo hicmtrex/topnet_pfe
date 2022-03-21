@@ -1,7 +1,6 @@
 import React from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Col, Container, Row, Image } from 'react-bootstrap';
 import './courses.css';
-
 
 const Courses = () => {
   return (
@@ -17,36 +16,44 @@ const Courses = () => {
             <div id='tabs'>
               <section className='tabs-content'>
                 <article id='tabs-1'>
-                  <div className='row'>
-                    <div className='col-md-6'>
-                      <img src='assets/images/choose-us-image-01.png' alt='' />
-                    </div>
-                    <div className='col-md-6'>
+                  <Row>
+                    <Col md={6} className=' my-2 '>
+                      <Image
+                        style={{ height: '400px' }}
+                        src='assets/images/topnet_3.jpg'
+                        alt='img'
+                        rounded
+                        className=' p-2'
+                      />
+                    </Col>
+                    <Col md={6}>
                       <h4>Best Education</h4>
                       <p>
                         Lorem ipsum dolor, sit amet consectetur adipisicing
                         elit. Accusamus odio non expedita! Dolore eligendi non
                         nulla numquam at explicabo rem dicta rerum sunt.
                         Facilis, animi ducimus corrupti impedit culpa labore?
-                        <a
-                          href='https://paypal.me/templatemo'
-                          target='_parent'
-                          rel='sponsored'
-                        >
+                        <a href='#' target='_parent' rel='sponsored'>
                           a little donation
                         </a>{' '}
                         to TemplateMo. Please tell your friends about us. Thank
                         you.
                       </p>
-                    </div>
-                  </div>
+                    </Col>
+                  </Row>
                 </article>
                 <article id='tabs-2'>
-                  <div className='row'>
-                    <div className='col-md-6'>
-                      <img src='assets/images/choose-us-image-02.png' alt='' />
-                    </div>
-                    <div className='col-md-6'>
+                  <Row>
+                    <Col md={6}>
+                      <Image
+                        style={{ height: '400px' }}
+                        src='assets/images/topnet_1.jpg'
+                        alt='img'
+                        rounded
+                        className=' p-2'
+                      />
+                    </Col>
+                    <Col md={6}>
                       <h4>Top Level</h4>
                       <p>
                         Lorem ipsum dolor, sit amet consectetur adipisicing
@@ -58,15 +65,21 @@ const Courses = () => {
                         Suspendisse tincidunt, magna ut finibus rutrum, libero
                         dolor euismod odio, nec interdum quam felis non ante.
                       </p>
-                    </div>
-                  </div>
+                    </Col>
+                  </Row>
                 </article>
                 <article id='tabs-3'>
-                  <div className='row'>
-                    <div className='col-md-6'>
-                      <img src='assets/images/choose-us-image-03.png' alt='' />
-                    </div>
-                    <div className='col-md-6'>
+                  <Row>
+                    <Col md={6}>
+                      <Image
+                        rounded
+                        style={{ height: '400px' }}
+                        src='assets/images/topnet_2.jpg'
+                        alt='img'
+                        className=' p-2'
+                      />
+                    </Col>
+                    <Col md={6}>
                       <h4>Quality Meeting</h4>
                       <p>
                         Lorem ipsum dolor, sit amet consectetur adipisicing
@@ -79,11 +92,11 @@ const Courses = () => {
                           target='_parent'
                         >
                           contact TemplateMo
-                        </a>{' '}
+                        </a>
                         now.
                       </p>
-                    </div>
-                  </div>
+                    </Col>
+                  </Row>
                 </article>
               </section>
             </div>

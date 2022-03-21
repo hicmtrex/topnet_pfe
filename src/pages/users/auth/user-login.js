@@ -67,6 +67,12 @@ const UserLogin = () => {
                         />
                         <RiLockPasswordFill size={'2.5rem'} />
                       </div>
+                      <Link
+                        to='/admin/auth-confirm-email'
+                        className='float-end mt-1'
+                      >
+                        forgot password?
+                      </Link>
                     </Form.Group>
                     <Button
                       type='submit'

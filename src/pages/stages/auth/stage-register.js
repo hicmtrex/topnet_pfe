@@ -2,12 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { Button, Card, Col, Form, Row } from 'react-bootstrap';
 import Layout from '../../../components/layout/layout';
 import { FaUserPlus } from 'react-icons/fa';
-
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { stagerLogin } from '../../../store/stages/stage-loginSlice';
-import './stage-auth.css';
 import { stagerRegister } from '../../../store/stages/stage-register';
+import './stage-auth.css';
 
 const StageRegister = () => {
   const { userInfo } = useSelector((state) => state.stageLogin);
@@ -235,7 +233,7 @@ const StageRegister = () => {
                               Administration de server
                             </option>
 
-                            <option value='Marketing '>Mrketing</option>
+                            <option value='Marketing '>Marketing</option>
                           </Form.Select>
                         </Form.Group>
                       </Col>
@@ -258,11 +256,7 @@ const StageRegister = () => {
                           </Form.Select>
                         </Form.Group>
                       </Col>
-                      <Button
-                        variant='secondary'
-                        type='submit'
-                        className='col-12 mt-3'
-                      >
+                      <Button type='submit' className='col-12 mt-3'>
                         Register
                       </Button>
                     </Row>

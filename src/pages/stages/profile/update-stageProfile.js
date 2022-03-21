@@ -243,13 +243,31 @@ const UpdateStageProfile = () => {
                           value={domaine}
                           required
                         >
-                          <option value='informatique'>Informatique</option>
-                          <option value='télécommunications'>
-                            Télécommunications
+                          <option value=' Developpeur web'>
+                            Développeur web
                           </option>
-                          <option value='business intelligence'>
-                            Business intelligence
+                          <option value='Technicien en informatique'>
+                            Technicien en informatique
                           </option>
+                          <option value='Reseaux et telecommunications'>
+                            Reseaux et Telecommunications
+                          </option>
+                          <option value='Sécurité du réseau'>
+                            Sécurité du réseau
+                          </option>
+                          <option value='Data analyst'>Data analyst</option>
+                          <option value=' Developpeur web'>
+                            Développeur Mobile
+                          </option>
+                          <option value=' Ux/Ui Design'>Ux/Ui Design</option>
+                          <option value=' Finance Sara Management'>
+                            Finance Management
+                          </option>
+                          <option value='Administration de server '>
+                            Administration de server
+                          </option>
+
+                          <option value='Marketing '>Mrketing</option>
                         </Form.Select>
                       </Form.Group>
                     </Col>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import Courses from '../courses/courses';
+import { FaGraduationCap } from 'react-icons/fa';
 import './lading-page.css';
 
 const Features = () => {
@@ -29,7 +30,7 @@ const Features = () => {
                 >
                   <div className='content-show'>
                     <h4>
-                      <i className='fas fa-chalkboard-teacher' />
+                      <FaGraduationCap size={'2.5rem'} className='me-2' />
                       All Courses
                     </h4>
                   </div>
@@ -62,7 +63,7 @@ const Features = () => {
                 >
                   <div className='content-show'>
                     <h4>
-                      <i className='fa fa-graduation-cap' />
+                      <FaGraduationCap size={'2.5rem'} className='me-2' />
                       Virtual Class
                     </h4>
                   </div>

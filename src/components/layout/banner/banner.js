@@ -12,7 +12,7 @@ const Banner = () => {
         <div className='caption'>
           <h6>Graduate School of Management</h6>
           <h2>
-            <em>Your</em> Classroom
+            <em>Your</em> Best Choice
           </h2>
           <div className='main-button'>
             <div className='scroll-to-section'>

@@ -22,13 +22,18 @@ const Sidebar = () => {
           aria-expanded='false'
           aria-label='Toggle navigation'
         >
-          <span className='navbar-toggler-icon' />{' '}
+          <span className='navbar-toggler-icon' />
         </Button>
         <Link
           className='navbar-brand py-lg-2 mb-lg-5 px-lg-6 me-0 d-flex align-items-center'
           to='/'
         >
-          <img width={100} src='/assets/images/top_netlogo.png' alt='logo' />
+          <Image
+            fluid
+            src='/assets/images/top_netlogo.png'
+            alt='logo'
+            className=''
+          />
           <span className='logo text-white'>
             <em>Top</em> Stage
           </span>
@@ -44,7 +49,6 @@ const Sidebar = () => {
               aria-expanded='false'
             >
               <div className='avatar-parent-child'>
-                {' '}
                 <img
                   alt='Image Placeholder'
                   src='https://images.unsplash.com/photo-1548142813-c348350df52b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80'
@@ -94,14 +98,6 @@ const Sidebar = () => {
                 <FaUser className='me-2' size={'1.5rem'} /> Strategies
               </Link>
             </li>
-            {/* <li className='nav-item  '>
-              <Link className='nav-link p-5' to='#'>
-                <FaUserCog className='me-2' size={'1.5rem'} /> Strategies
-                <span className='badge bg-soft-primary text-primary rounded-pill d-inline-flex align-items-center ms-auto'>
-                  6
-                </span>
-              </Link>
-            </li> */}
           </ul>
 
           <hr className='navbar-divider my-5 opacity-20' />

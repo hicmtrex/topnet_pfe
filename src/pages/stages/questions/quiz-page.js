@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 const QuizPage = () => {
   const { userInfo } = useSelector((state) => state.stageLogin);
+  const { userInfo: admin } = useSelector((state) => state.userLogin);
   const navigate = useNavigate();
   const [questions, setQuestions] = useState([]);
   const [userAnswer, setUserAnswer] = useState([]);
@@ -20,7 +21,7 @@ const QuizPage = () => {
     setQuestions(data);
   };
   useEffect(() => {
-    if (!userInfo) return navigate('/stages/auth-login');
+    if (!userInfo && !admin) return navigate('/stages/auth-login');
     getQuestions();
   }, [userInfo]);
 
@@ -55,7 +56,6 @@ const QuizPage = () => {
     ]);
 
     setTime(60);
-    setValue('');
   };
 
   return (
