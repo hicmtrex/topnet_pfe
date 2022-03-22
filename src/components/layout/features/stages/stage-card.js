@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const StageCard = ({ stage }) => {
   return (
-    <Link to='/questions/quiz'>
+    <Link to='/stages/subjects'>
       <Card className=' border-hover-primary hover-scale'>
         <Card.Body>
           <div className='text-primary mb-5'>

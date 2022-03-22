@@ -26,6 +26,9 @@ import ResetPassword from './pages/stages/auth/forget-password/reset-password';
 import ConfirmEmail from './pages/stages/auth/forget-password/confirm-email';
 import ResetPasswordUser from './pages/users/forget-password/reset-password';
 import ConfirmUserEmail from './pages/users/forget-password/confirm-Useremail';
+import TestLadingPage from './pages/admin/dashboard/test-psycho/test-ladingpage';
+import StageSubject from './pages/stages/stage-subject/stage-subjects';
+import AddTest from './pages/admin/dashboard/test-psycho/add-test';
 
 const App = () => {
   return (
@@ -54,6 +57,8 @@ const App = () => {
             </ProtectedRoute>
           }
         />
+
+        <Route path='/stages/subjects' element={<StageSubject />} />
         <Route path='/questions/quiz' element={<QuizPage />} />
         <Route
           path='/users/update-userprofile/:id'
@@ -87,6 +92,11 @@ const App = () => {
         <Route path='/admin/stages/:id' element={<StagerDetail />} />
         <Route path='/admin/users/:id' element={<UserDetail />} />
         <Route path='/admin/add-user' element={<AddUser />} />
+        <Route
+          path='/admin/test-psychotechnique'
+          element={<TestLadingPage />}
+        />
+        <Route path='/admin/add-test' element={<AddTest />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
 

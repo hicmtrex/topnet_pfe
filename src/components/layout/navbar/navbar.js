@@ -33,7 +33,7 @@ const Header = () => {
           <img width={60} src='/assets/images/top_netlogo.png' alt='...' />
           <Navbar.Brand>
             <span className='logo'>
-              <em>Top</em> Stage
+              <em>op</em> Stage
             </span>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls='responsive-navbar-nav' />

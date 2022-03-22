@@ -47,7 +47,7 @@ const StageList = () => {
             </thead>
             <tbody>
               {stages.map((stage) => (
-                <StagerTable key={stage.id} stage={stage} />
+                <StagerTable key={stage._id} stage={stage} />
               ))}
             </tbody>
           </Table>

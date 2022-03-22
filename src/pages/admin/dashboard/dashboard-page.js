@@ -2,7 +2,6 @@ import React from 'react';
 import { Row, Col, Card } from 'react-bootstrap';
 
 import DashboardLayout from '../../../components/layout/admin/dashboard-layout';
-import './dashboard.css';
 
 const DashBoardPage = () => {
   return (

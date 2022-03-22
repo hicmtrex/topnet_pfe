@@ -1,11 +1,23 @@
 import React from 'react';
 import { Nav, Image, Container, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
 import { AiFillHome, AiFillDashboard } from 'react-icons/ai';
-import { FaUserTie, FaUser, FaUserCog } from 'react-icons/fa';
+import { FaUserTie, FaUser } from 'react-icons/fa';
+import { useDispatch, useSelector } from 'react-redux';
+import { stageLogout } from '../../../store/stages/stage-loginSlice';
+import { userLogout } from '../../../store/users/user-loginSlice';
 
 const Sidebar = () => {
+  const { userInfo } = useSelector((state) => state.userLogin);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const onLogout = () => {
+    dispatch(stageLogout());
+    dispatch(userLogout());
+    navigate('/stages/auth-login');
+  };
+
   return (
     <nav
       style={{ backgroundColor: 'rgba(22, 34, 57, 0.95)' }}
@@ -13,7 +25,6 @@ const Sidebar = () => {
       id='navbarVertical'
     >
       <Container fluid>
-        {/* Toggler */}{' '}
         <Button
           className='navbar-toggler ms-n2'
           data-bs-toggle='collapse'
@@ -35,13 +46,13 @@ const Sidebar = () => {
             className=''
           />
           <span className='logo text-white'>
-            <em>Top</em> Stage
+            <em>op</em> Stage
           </span>
         </Link>
         <div className='navbar-user d-lg-none'>
           <div className='dropdown'>
-            <a
-              href='#'
+            <Link
+              to='#'
               id='sidebarAvatar'
               role='button'
               data-bs-toggle='dropdown'
@@ -49,27 +60,27 @@ const Sidebar = () => {
               aria-expanded='false'
             >
               <div className='avatar-parent-child'>
-                <img
+                <Image
                   alt='Image Placeholder'
                   src='https://images.unsplash.com/photo-1548142813-c348350df52b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80'
                   className='avatar avatar- rounded-circle'
                 />
                 <span className='avatar-child avatar-badge bg-success' />
               </div>
-            </a>{' '}
+            </Link>{' '}
             <div
               className='dropdown-menu dropdown-menu-end'
               aria-labelledby='sidebarAvatar'
             >
-              <a href='#' className='dropdown-item'>
+              <Link to='/' className='dropdown-item'>
                 Profile
-              </a>
-              <a href='#' className='dropdown-item'>
+              </Link>
+              <Link to='#' className='dropdown-item'>
                 Settings
-              </a>
-              <a href='#' className='dropdown-item'>
+              </Link>
+              <Link to='#' className='dropdown-item'>
                 Billing
-              </a>
+              </Link>
               <hr className='dropdown-divider' />{' '}
               <button className='dropdown-item'>Logout</button>
             </div>
@@ -95,9 +106,17 @@ const Sidebar = () => {
             </li>
             <li className='nav-item '>
               <Link className='nav-link p-5' to='/admin/stages-list'>
-                <FaUser className='me-2' size={'1.5rem'} /> Strategies
+                <FaUser className='me-2' size={'1.5rem'} /> Stagiaires
               </Link>
             </li>
+            {userInfo.user.service_rh && (
+              <li className='nav-item '>
+                <Link className='nav-link p-5' to='/admin/test-psychotechnique'>
+                  <FaUser className='me-2' size={'1.5rem'} /> Test
+                  Psychotechnique
+                </Link>
+              </li>
+            )}
           </ul>
 
           <hr className='navbar-divider my-5 opacity-20' />
@@ -162,7 +181,7 @@ const Sidebar = () => {
               </a>
             </li>
             <li>
-              <a href='#' className='nav-link d-flex align-items-center'>
+              <Link to='#' className='nav-link d-flex align-items-center'>
                 <div className='me-4'>
                   <div className='position-relative d-inline-block text-white'>
                     <Image
@@ -184,20 +203,20 @@ const Sidebar = () => {
                 <div className='ms-auto'>
                   <i className='bi bi-chat' />
                 </div>
-              </a>
+              </Link>
             </li>
           </ul>
-          <div className='mt-auto' />
+          <div className='' />
           <ul className='navbar-nav'>
             <li className='nav-item'>
-              <LinkContainer to='/users/profile'>
+              <LinkContainer to='/stages/profile'>
                 <Nav.Link>
                   <i className='bi bi-person-square' /> My Account
                 </Nav.Link>
               </LinkContainer>
             </li>
             <li className='nav-item'>
-              <Nav.Link>
+              <Nav.Link onClick={onLogout}>
                 <i className='bi bi-box-arrow-left' /> Logout
               </Nav.Link>
             </li>

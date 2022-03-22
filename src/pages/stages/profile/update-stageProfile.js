@@ -135,7 +135,7 @@ const UpdateStageProfile = () => {
                   JPG or PNG no larger than 5 MB
                 </div>
 
-                <input className='btn btn-primary' type='file' />
+                <Button>Update Image</Button>
               </Card.Body>
             </Card>
           </Col>

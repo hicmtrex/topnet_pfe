@@ -12,6 +12,9 @@ import updateUserSlice from './users/update-userSlice';
 import usersDetailSlice from './users/user-detailSlice';
 import confirmEmailSlice from './stages/confirm-emailSlice';
 import confirmUserSlice from './users/confirm-userSlice';
+import questionsListSlice from './questions/question-listSlice';
+import createquestionSlice from './questions/create-question';
+import deleteQuestionSlice from './questions/delete-question';
 
 const reducers = combineReducers({
   stageLogin: loginStageSlice.reducer,
@@ -29,6 +32,9 @@ const reducers = combineReducers({
   //reset password
   emailConfirm: confirmEmailSlice.reducer,
   userConfirm: confirmUserSlice.reducer,
+  questionList: questionsListSlice.reducer,
+  addQuestion: createquestionSlice.reducer,
+  removeQuestion: deleteQuestionSlice.reducer,
 });
 
 const store = configureStore({

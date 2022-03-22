@@ -103,10 +103,7 @@ const UpdateUserProfile = () => {
                   JPG or PNG no larger than 5 MB
                 </div>
 
-                <Form.Control
-                  className='btn btn-primary col-2 col-md-2 '
-                  type='file'
-                />
+                <Button>Update Image</Button>
               </Card.Body>
             </Card>
           </Col>
