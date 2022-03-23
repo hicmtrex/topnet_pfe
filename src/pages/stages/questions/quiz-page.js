@@ -18,7 +18,7 @@ const QuizPage = () => {
 
   const getQuestions = async () => {
     const { data } = await axios.get('/api/questions');
-    setQuestions(data);
+    setQuestions(data.data);
   };
   useEffect(() => {
     if (!userInfo && !admin) return navigate('/stages/auth-login');
@@ -37,7 +37,7 @@ const QuizPage = () => {
       clearInterval(done);
     };
   }, [time]);
-
+  console.log(userAnswer);
   const subitHandler = (e) => {
     e.preventDefault();
     if (num === questions.length) {

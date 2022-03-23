@@ -7,6 +7,7 @@ import { createUser } from '../../../../store/users/add-userSlice';
 import toast from 'react-hot-toast';
 import FormContainer from '../../../../components/UI/form-container';
 import { createQuestion } from '../../../../store/questions/create-question';
+import Title from '../../../../components/UI/typography/title';
 
 const AddTest = () => {
   const navigate = useNavigate();
@@ -84,9 +85,7 @@ const AddTest = () => {
               <Col lg={6}>
                 <div className='p-5'>
                   <div className='mb-5'>
-                    <h1 className=' font-weight-bold text-primary'>
-                      Add Question
-                    </h1>
+                    <Title title='Add' message='Question' />
                   </div>
 
                   <Form onSubmit={onSubmit}>

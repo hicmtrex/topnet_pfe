@@ -3,6 +3,7 @@ import { Card, Col, Row, Image } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import StageCard from '../components/layout/features/stages/stage-card';
 import Layout from '../components/layout/layout';
+import Title from '../components/UI/typography/title';
 import { stages } from '../utils/data';
 
 const HomePage = () => {
@@ -10,9 +11,8 @@ const HomePage = () => {
     <Layout>
       <Row className=' justify-content-center text-center mt-5 pt-5 mb-3'>
         <div className='col-xl-6 col-lg-8 col-sm-10'>
-          <h1 className='font-weight-bold'>
-            Catalogue De Stage <br />
-          </h1>
+          <Title title={'Catalogue'} message=' De Stage' />
+
           <p className='text-muted mb-0'>
             We bring the results while helping you achieve cost and time savings
             without taking on risk or management overhead.

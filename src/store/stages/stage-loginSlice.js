@@ -22,7 +22,9 @@ export const stagerLogin = createAsyncThunk(
       });
 
       if (data.user.status === true) {
-        toast.success(`Welcome ${data.user.first_name}`);
+        toast(`Welcome ${data.user.first_name}`, {
+          icon: '👏',
+        });
         localStorage.setItem(LOCAL_STORAGE.auth, JSON.stringify(data));
       }
       return data;

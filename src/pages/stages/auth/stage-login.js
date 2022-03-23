@@ -11,9 +11,11 @@ import './stage-auth.css';
 import { LOCAL_STORAGE } from '../../../utils/help-api';
 import toast from 'react-hot-toast';
 import { GoSignIn } from 'react-icons/go';
+import Message from '../../../components/UI/Message';
+import Title from '../../../components/UI/typography/title';
 
 const StageLogin = () => {
-  const { userInfo } = useSelector((state) => state.stageLogin);
+  const { userInfo, error } = useSelector((state) => state.stageLogin);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
@@ -40,18 +42,15 @@ const StageLogin = () => {
             <Row>
               <Col lg={6}>
                 <div className='p-5'>
-                  <div className='mb-5'>
-                    <h2 className='font-weight-bold'>
-                      Login your account
-                      <span className='ms-5'>
-                        <GoSignIn size='2.5rem' />
-                      </span>
-                    </h2>
+                  <div className='mb-5 d-flex align-items-center'>
+                    <Title title='Login' message='your account' />{' '}
+                    <GoSignIn size='2.5rem' className='ms-5' />
                   </div>
                   <h6 className='h5 mb-0'>Just Do Register.</h6>
-                  <p className='text-muted mt-2 mb-5'>
+                  {/* <p className='text-muted mt-2 mb-5'>
                     If You Really Want To Know, Look In The Register.
-                  </p>
+                  </p> */}
+
                   <Form onSubmit={loginHandler}>
                     <Form.Group controlId='email'>
                       <Form.Label>Email</Form.Label>
@@ -85,7 +84,11 @@ const StageLogin = () => {
                         forgot password?
                       </Link>
                     </Form.Group>
-                    <Button type='submit' className='col-11 mt-3'>
+                    <Button
+                      variant='warning'
+                      type='submit'
+                      className='col-11 mt-3'
+                    >
                       Login
                     </Button>
                   </Form>
@@ -102,7 +105,7 @@ const StageLogin = () => {
 
         <p className='text-muted text-center mt-3 mb-0'>
           Don't have an account?{' '}
-          <Link to='/stages/auth-register' className='text-primary ml-1'>
+          <Link to='/stages/auth-register' className='text-warning ml-1'>
             Register
           </Link>
         </p>

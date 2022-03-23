@@ -4,7 +4,6 @@ import Topbar from './topbar';
 import { Container } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import './dashboard-layout.css';
 
 const DashboardLayout = ({ children }) => {
   const { userInfo } = useSelector((state) => state.userLogin);

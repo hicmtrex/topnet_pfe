@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, FormSelect } from 'react-bootstrap';
+import { Button, FormSelect, Image } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { FaTimes } from 'react-icons/fa';
@@ -36,10 +36,11 @@ const UsersList = ({ user }) => {
   return (
     <tr>
       <td>
-        <img
-          alt='...'
+        <Image
+          roundedCircle
+          alt='avatar'
           src='https://bootdey.com/img/Content/avatar/avatar7.png'
-          class='avatar avatar-sm rounded-circle me-3'
+          className='avatar avatar-sm me-3'
         />
 
         <Link className='text-heading font-semibold' to='#'>

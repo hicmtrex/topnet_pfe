@@ -33,7 +33,7 @@ const Header = () => {
           <img width={60} src='/assets/images/top_netlogo.png' alt='...' />
           <Navbar.Brand>
             <span className='logo'>
-              <em>op</em> Stage
+              <span style={{ color: '#f5a425' }}>op</span> Stage
             </span>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls='responsive-navbar-nav' />
@@ -81,10 +81,10 @@ const Header = () => {
             ) : (
               <Nav>
                 <LinkContainer to='/stages/auth-login'>
-                  <Nav.Link>Sign In</Nav.Link>
+                  <Nav.Link>Sign in</Nav.Link>
                 </LinkContainer>
                 <LinkContainer to='/stages/auth-register'>
-                  <Nav.Link>Sign Up</Nav.Link>
+                  <Nav.Link>Sign up</Nav.Link>
                 </LinkContainer>
               </Nav>
             )}

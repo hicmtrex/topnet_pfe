@@ -5,21 +5,25 @@ import adminAxios, { setError } from '../../../utils/help-api';
 const initialState = {
   loading: false,
   users: [],
+  total: null,
   error: null,
 };
 
-export const getUsersList = createAsyncThunk('get/users', async (thunkAPI) => {
-  try {
-    const res = await adminAxios.get('/users');
-    if (res.data) {
-      return res.data;
+export const getUsersList = createAsyncThunk(
+  'get/users',
+  async (page, thunkAPI) => {
+    try {
+      const res = await adminAxios.get(`/users?page=${page}`);
+      if (res.data) {
+        return res.data;
+      }
+    } catch (error) {
+      const message = setError(error);
+      toast.error(message);
+      return thunkAPI.rejectWithValue(message);
     }
-  } catch (error) {
-    const message = setError(error);
-    toast.error(message);
-    return thunkAPI.rejectWithValue(message);
   }
-});
+);
 
 const usersListSlice = createSlice({
   name: 'users-list',
@@ -33,7 +37,8 @@ const usersListSlice = createSlice({
       })
       .addCase(getUsersList.fulfilled, (state, action) => {
         state.loading = false;
-        state.users = action.payload;
+        state.users = action.payload.data;
+        state.total = action.payload.total;
       })
       .addCase(getUsersList.rejected, (state, action) => {
         state.loading = false;

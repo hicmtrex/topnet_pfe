@@ -1,21 +1,25 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import DashboardLayout from '../../../../components/layout/admin/dashboard-layout';
-import { Card } from 'react-bootstrap';
+import { Button, Card } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { getQuestionsList } from '../../../../store/questions/question-listSlice';
 import Loader from '../../../../components/UI/loader';
 import QuestionItem from '../../../../components/layout/admin/questions/question-item';
-import { Link } from 'react-router-dom';
+import Paginate from '../../../../components/UI/Paginate';
+import { useNavigate } from 'react-router-dom';
 
 const TestLadingPage = () => {
-  const { questions, loading } = useSelector((state) => state.questionList);
+  const { questions, loading, total } = useSelector(
+    (state) => state.questionList
+  );
   const { success } = useSelector((state) => state.removeQuestion);
-
+  const [page, setPage] = useState(1);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    dispatch(getQuestionsList());
-  }, [dispatch, success]);
+    dispatch(getQuestionsList(page));
+  }, [dispatch, success, page]);
 
   return (
     <DashboardLayout>
@@ -23,12 +27,16 @@ const TestLadingPage = () => {
         <Loader />
       ) : (
         <>
-          <Card className=' shadow border-0 mb-7  '>
-            <Card.Header className='d-flex justify-content-between'>
-              <h5 className='mb-0 text-dark'>Questions List</h5>
-              <Link to={'/admin/add-test'} className='btn btn-primary'>
+          <Card className=' shadow border-0 mb-2'>
+            <Card.Header className='card-header d-flex bg-dark  justify-content-between'>
+              <h5 className='mb-0 text-white'>Questions List</h5>
+              <Button
+                variant='warning'
+                onClick={() => navigate('/admin/add-test')}
+                className='btn-sm '
+              >
                 Add Question
-              </Link>
+              </Button>
             </Card.Header>
           </Card>
           <div className='container d-flex justify-content-center mt-50 mb-50'>
@@ -44,6 +52,7 @@ const TestLadingPage = () => {
               </div>
             </div>
           </div>
+          <Paginate page={page} total={total} setPage={setPage} />
         </>
       )}
     </DashboardLayout>

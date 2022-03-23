@@ -14,7 +14,7 @@
 }
 
 .logo em {
-  color: #f5a425;
+  color: #fff;
 }
 
 .navbar__top .logo a {
@@ -26,7 +26,6 @@
 }
 .navbar__top .logo a em {
   font-style: normal;
-  color: #f5a425;
 }
 
 .nav-item a:hover {

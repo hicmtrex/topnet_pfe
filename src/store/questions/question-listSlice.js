@@ -1,18 +1,20 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import axios from 'axios';
 import toast from 'react-hot-toast';
 import adminAxios, { setError } from '../../utils/help-api';
 
 const initialState = {
   loading: false,
   questions: [],
+  total: null,
   error: null,
 };
 
 export const getQuestionsList = createAsyncThunk(
   'get/questions',
-  async (thunkAPI) => {
+  async (page, thunkAPI) => {
     try {
-      const res = await adminAxios.get('/questions');
+      const res = await axios.get(`/api/questions?page=${page}`);
       if (res.data) {
         return res.data;
       }
@@ -36,7 +38,8 @@ const questionsListSlice = createSlice({
       })
       .addCase(getQuestionsList.fulfilled, (state, action) => {
         state.loading = false;
-        state.questions = action.payload;
+        state.questions = action.payload.data;
+        state.total = action.payload.total;
       })
       .addCase(getQuestionsList.rejected, (state, action) => {
         state.loading = false;

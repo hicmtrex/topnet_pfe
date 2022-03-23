@@ -7,13 +7,14 @@ const initialState = {
   loading: false,
   stages: [],
   error: null,
+  total: 10,
 };
 
 export const getStagesList = createAsyncThunk(
   'get/stages',
-  async (thunkAPI) => {
+  async (page = 1, thunkAPI) => {
     try {
-      const res = await adminAxios.get('/stages');
+      const res = await adminAxios.get(`/stages?page=${page}`);
       if (res.data) {
         return res.data;
       }
@@ -37,7 +38,8 @@ const stagesListSlice = createSlice({
       })
       .addCase(getStagesList.fulfilled, (state, action) => {
         state.loading = false;
-        state.stages = action.payload;
+        state.stages = action.payload.data;
+        state.total = action.payload.total;
       })
       .addCase(getStagesList.rejected, (state, action) => {
         state.loading = false;

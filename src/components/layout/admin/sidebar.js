@@ -1,5 +1,5 @@
 import React from 'react';
-import { Nav, Image, Container, Button } from 'react-bootstrap';
+import { Nav, Image, Container, Button, Navbar } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
 import { AiFillHome, AiFillDashboard } from 'react-icons/ai';
@@ -19,9 +19,11 @@ const Sidebar = () => {
   };
 
   return (
-    <nav
+    <Navbar
+      expand='lg'
+      variant='dark'
       style={{ backgroundColor: 'rgba(22, 34, 57, 0.95)' }}
-      className='navbar show navbar-vertical h-lg-screen navbar-expand-lg px-0 py-3 navbar-dark  border-bottom border-bottom-lg-0 '
+      className=' show navbar-vertical h-lg-screen  px-0 py-3  border-bottom border-bottom-lg-0 '
       id='navbarVertical'
     >
       <Container fluid>
@@ -43,10 +45,10 @@ const Sidebar = () => {
             fluid
             src='/assets/images/top_netlogo.png'
             alt='logo'
-            className=''
+            style={{ height: '50px' }}
           />
           <span className='logo text-white'>
-            <em>op</em> Stage
+            <span style={{ color: '#f5a425' }}>op</span> Stage
           </span>
         </Link>
         <div className='navbar-user d-lg-none'>
@@ -223,7 +225,7 @@ const Sidebar = () => {
           </ul>
         </div>
       </Container>
-    </nav>
+    </Navbar>
   );
 };
 

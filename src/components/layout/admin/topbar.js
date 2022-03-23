@@ -20,6 +20,7 @@ const Topbar = () => {
             <div className='col-sm-6 col-12 text-sm-end'>
               <div className=' text-white'>
                 <Button
+                  variant='warning'
                   disabled={!userInfo.user.coordinator}
                   onClick={() => navigate('/admin/add-user')}
                   className='m-3'

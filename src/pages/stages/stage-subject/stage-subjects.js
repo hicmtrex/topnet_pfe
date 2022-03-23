@@ -2,6 +2,7 @@ import React from 'react';
 import { Button, Card, Col, Row } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import Layout from '../../../components/layout/layout';
+import Title from '../../../components/UI/typography/title';
 
 const StageSubject = () => {
   const navigate = useNavigate();
@@ -20,7 +21,7 @@ const StageSubject = () => {
         style={{ height: '80vh' }}
         className='d-flex justify-content-center align-items-center'
       >
-        <h1 className='text-center mb-2'>Offer De Stage</h1>
+        <Title title={'Offer'} message='De Stage' />
         <Col md={4}>
           <Card>
             <Card.Img

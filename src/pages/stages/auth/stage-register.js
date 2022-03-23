@@ -6,6 +6,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { stagerRegister } from '../../../store/stages/stage-register';
 import './stage-auth.css';
+import Title from '../../../components/UI/typography/title';
 
 const StageRegister = () => {
   const { userInfo } = useSelector((state) => state.stageLogin);
@@ -78,13 +79,15 @@ const StageRegister = () => {
             <Row>
               <Col lg={6}>
                 <div className='p-2'>
-                  <div className='mb-5'>
-                    <h2 className='font-weight-bold'>
+                  <div className='mb-5 d-flex align-items-center'>
+                    <Title title='Register' message='for free' />
+                    <FaUserPlus size='2.5rem' className='ms-5' />
+                    {/* <h2 className='font-weight-bold'>
                       Register for free
                       <span className='ms-5'>
                         <FaUserPlus size='2.5rem' />
                       </span>
-                    </h2>
+                    </h2> */}
                   </div>
 
                   <Form className='form__register' onSubmit={onSubmit}>
@@ -256,7 +259,11 @@ const StageRegister = () => {
                           </Form.Select>
                         </Form.Group>
                       </Col>
-                      <Button type='submit' className='col-12 mt-3'>
+                      <Button
+                        variant='warning'
+                        type='submit'
+                        className='col-12 mt-3'
+                      >
                         Register
                       </Button>
                     </Row>
@@ -274,7 +281,7 @@ const StageRegister = () => {
 
         <p className='text-muted text-center mt-3 mb-0'>
           Already have an account?{' '}
-          <Link to='/stages/auth-login' className='text-primary ml-1'>
+          <Link to='/stages/auth-login' className='text-warning ml-1'>
             Login
           </Link>
         </p>
