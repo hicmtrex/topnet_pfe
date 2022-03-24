@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Form, Row, Col, Card } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import DashboardLayout from '../../../../components/layout/admin/dashboard-layout';
@@ -43,6 +43,24 @@ const AddTest = () => {
       ...prevState,
       [e.target.name]: e.target.value,
     }));
+  };
+  console.log(rightAnswer);
+  const onSubmit = (e) => {
+    e.preventDefault();
+
+    const newUser = {
+      categories,
+      topics,
+      title,
+      content,
+      answers,
+    };
+    console.log(newUser);
+    dispatch(createQuestion(newUser));
+    navigate('/admin/test-psychotechnique');
+  };
+
+  useEffect(() => {
     setAnswers([
       {
         a: answer1,
@@ -61,23 +79,7 @@ const AddTest = () => {
         right: rightAnswer === 'answer4' ? true : false,
       },
     ]);
-  };
-  console.log(rightAnswer);
-  const onSubmit = (e) => {
-    e.preventDefault();
-
-    const newUser = {
-      categories,
-      topics,
-      title,
-      content,
-      answers,
-    };
-    console.log(newUser);
-    dispatch(createQuestion(newUser));
-    navigate('/admin/test-psychotechnique');
-  };
-
+  }, [rightAnswer]);
   return (
     <DashboardLayout>
       <FormContainer title={'Login your account'}>

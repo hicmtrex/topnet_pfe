@@ -4,9 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { FaTimes } from 'react-icons/fa';
 import { BsTrash } from 'react-icons/bs';
-import { AiOutlineMail, AiFillPhone } from 'react-icons/ai';
+import { AiOutlineMail, AiFillPhone, AiFillEdit } from 'react-icons/ai';
 import { HiIdentification } from 'react-icons/hi';
 import { updateStage } from '../../../../store/stages/admin/update-stageSlice';
+import { MdSystemUpdate } from 'react-icons/md';
 
 const StagerTable = ({ stage }) => {
   const [edit, setEdit] = useState(false);
@@ -38,7 +39,10 @@ const StagerTable = ({ stage }) => {
           className='avatar avatar-sm  me-3'
         />
 
-        <Link className='text-heading font-semibold' to='#'>
+        <Link
+          className='text-heading font-semibold'
+          to={`/admin/stages/${stage._id}`}
+        >
           {stage.first_name} {stage.last_name}
         </Link>
       </td>
@@ -97,14 +101,14 @@ const StagerTable = ({ stage }) => {
                 className=' btn-sm  btn-neutral text-primary mx-2'
                 onClick={onUpdate}
               >
-                Update
+                <MdSystemUpdate size={'1rem'} />
               </Button>
             ) : (
               <Button
-                className=' btn-sm  btn-neutral text-primary mx-2'
+                className=' btn-sm  btn-neutral text-primary me-2'
                 onClick={() => setEdit(true)}
               >
-                Edit
+                <AiFillEdit size={'1rem'} />
               </Button>
             )}
 

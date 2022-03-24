@@ -20,7 +20,7 @@ const UserDetail = () => {
   return (
     <Layout>
       <Button onClick={() => navigate(-1)}>Go Back</Button>
-      {loading ? (
+      {loading || !user ? (
         <Loader />
       ) : (
         <div className='main-body'>

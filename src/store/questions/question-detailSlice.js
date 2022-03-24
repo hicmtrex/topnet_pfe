@@ -1,20 +1,18 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import axios from 'axios';
 import toast from 'react-hot-toast';
 import adminAxios, { setError } from '../../utils/help-api';
 
 const initialState = {
   loading: false,
-  questions: [],
-  total: null,
+  question: null,
   error: null,
 };
 
-export const getQuestionsList = createAsyncThunk(
-  'get/questions',
-  async (page, thunkAPI) => {
+export const getQuestionDetail = createAsyncThunk(
+  'get/question/:id',
+  async (id, thunkAPI) => {
     try {
-      const res = await axios.get(`/api/questions?page=${page}`);
+      const res = await adminAxios.get(`/questions/${id}`);
       if (res.data) {
         return res.data;
       }
@@ -26,26 +24,24 @@ export const getQuestionsList = createAsyncThunk(
   }
 );
 
-const questionsListSlice = createSlice({
-  name: 'questions-list',
+const questionDetailSlice = createSlice({
+  name: 'question-detail',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(getQuestionsList.pending, (state) => {
+      .addCase(getQuestionDetail.pending, (state) => {
         state.loading = true;
-        state.questions = [];
       })
-      .addCase(getQuestionsList.fulfilled, (state, action) => {
+      .addCase(getQuestionDetail.fulfilled, (state, action) => {
         state.loading = false;
-        state.questions = action.payload.data;
-        state.total = action.payload.total;
+        state.question = action.payload;
       })
-      .addCase(getQuestionsList.rejected, (state, action) => {
+      .addCase(getQuestionDetail.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       });
   },
 });
 
-export default questionsListSlice;
+export default questionDetailSlice;

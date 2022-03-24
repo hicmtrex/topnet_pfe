@@ -4,17 +4,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { FaTimes } from 'react-icons/fa';
 import { BsTrash } from 'react-icons/bs';
-import { AiOutlineMail } from 'react-icons/ai';
+import { AiFillEdit, AiOutlineMail } from 'react-icons/ai';
 import { HiIdentification } from 'react-icons/hi';
 import { updateUser } from '../../../../store/users/update-userSlice';
 import { roleCheck } from '../../../../utils/help-api';
+import { MdSystemUpdate } from 'react-icons/md';
 
 const UsersList = ({ user }) => {
   const [edit, setEdit] = useState(false);
-  const [role, setRole] = useState('');
   const { userInfo } = useSelector((state) => state.userLogin);
   const dispatch = useDispatch();
   const [status, setStatus] = useState(user.status ? 'Active' : 'Deactive');
+  const [role, setRole] = useState('encadrant');
 
   const onDelete = (i) => {
     if (window.confirm('Are you sure?')) {
@@ -63,11 +64,7 @@ const UsersList = ({ user }) => {
       <>
         {edit ? (
           <td>
-            <FormSelect
-              style={{ width: '70%' }}
-              onChange={(e) => setRole(e.target.value)}
-              value={role}
-            >
+            <FormSelect onChange={(e) => setRole(e.target.value)} value={role}>
               <option value='encadrant'>Encadrant</option>
               <option value='service_rh'>Service Rh</option>
               <option value='coordinator'>Coondinator</option>
@@ -81,6 +78,8 @@ const UsersList = ({ user }) => {
       {edit ? (
         <td>
           <FormSelect
+            className=' form-select-sm px-5'
+            style={{ fontSize: '10px' }}
             onChange={(e) => setStatus(e.target.value)}
             value={status}
           >
@@ -115,14 +114,14 @@ const UsersList = ({ user }) => {
                 className=' btn-sm  btn-neutral text-primary mx-2'
                 onClick={() => onUpdate(user._id)}
               >
-                Update
+                <MdSystemUpdate size={'1rem'} />
               </Button>
             ) : (
               <Button
                 className=' btn-sm  btn-neutral text-primary mx-2'
                 onClick={() => setEdit(true)}
               >
-                Edit
+                <AiFillEdit size={'1rem'} />
               </Button>
             )}
 

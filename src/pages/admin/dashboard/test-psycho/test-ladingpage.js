@@ -13,13 +13,16 @@ const TestLadingPage = () => {
     (state) => state.questionList
   );
   const { success } = useSelector((state) => state.removeQuestion);
+  const { success: successUpdate } = useSelector(
+    (state) => state.updateQuestion
+  );
   const [page, setPage] = useState(1);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(getQuestionsList(page));
-  }, [dispatch, success, page]);
+  }, [dispatch, success, page, successUpdate]);
 
   return (
     <DashboardLayout>

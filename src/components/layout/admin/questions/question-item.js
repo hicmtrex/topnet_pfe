@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FiTrash } from 'react-icons/fi';
-import { AiOutlineDown } from 'react-icons/ai';
+import { AiOutlineDown, AiFillEdit } from 'react-icons/ai';
 import { Card, ListGroup } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -22,8 +22,9 @@ const QuestionItem = ({ question, num }) => {
     <Card className=' mb-2' style={{ minWidth: '60vw' }}>
       <Card.Header>
         <Card.Title>
-          <a className='text-muted ' data-toggle='collapse' href='#question1'>
+          <a className='text-muted ' data-toggle='collapse'>
             {question.title}
+
             <AiOutlineDown
               onClick={() => setShow((prev) => (prev = !prev))}
               size={'1rem'}
@@ -31,6 +32,11 @@ const QuestionItem = ({ question, num }) => {
             />
             <FiTrash
               onClick={() => onDelete(question._id)}
+              size={'1rem'}
+              className='me-5 text-slate pull-right'
+            />
+            <AiFillEdit
+              onClick={() => navigate(`/admin/edit-test/${question._id}`)}
               size={'1rem'}
               className='me-5 text-slate pull-right'
             />

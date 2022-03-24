@@ -3,7 +3,9 @@ import { Nav, Image, Container, Button, Navbar } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
 import { AiFillHome, AiFillDashboard } from 'react-icons/ai';
-import { FaUserTie, FaUser } from 'react-icons/fa';
+import { FaUserTie } from 'react-icons/fa';
+import { HiUsers } from 'react-icons/hi';
+import { GiSecretBook } from 'react-icons/gi';
 import { useDispatch, useSelector } from 'react-redux';
 import { stageLogout } from '../../../store/stages/stage-loginSlice';
 import { userLogout } from '../../../store/users/user-loginSlice';
@@ -108,13 +110,13 @@ const Sidebar = () => {
             </li>
             <li className='nav-item '>
               <Link className='nav-link p-5' to='/admin/stages-list'>
-                <FaUser className='me-2' size={'1.5rem'} /> Stagiaires
+                <HiUsers className='me-2' size={'1.5rem'} /> Stagiaires
               </Link>
             </li>
             {userInfo.user.service_rh && (
               <li className='nav-item '>
                 <Link className='nav-link p-5' to='/admin/test-psychotechnique'>
-                  <FaUser className='me-2' size={'1.5rem'} /> Test
+                  <GiSecretBook className='me-2 ' size={'1.5rem'} /> Test
                   Psychotechnique
                 </Link>
               </li>

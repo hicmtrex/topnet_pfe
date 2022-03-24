@@ -29,6 +29,7 @@ import ConfirmUserEmail from './pages/users/forget-password/confirm-Useremail';
 import TestLadingPage from './pages/admin/dashboard/test-psycho/test-ladingpage';
 import StageSubject from './pages/stages/stage-subject/stage-subjects';
 import AddTest from './pages/admin/dashboard/test-psycho/add-test';
+import EditTest from './pages/admin/dashboard/test-psycho/edit-test';
 
 const App = () => {
   return (
@@ -97,6 +98,7 @@ const App = () => {
           element={<TestLadingPage />}
         />
         <Route path='/admin/add-test' element={<AddTest />} />
+        <Route path='/admin/edit-test/:id' element={<EditTest />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
 
