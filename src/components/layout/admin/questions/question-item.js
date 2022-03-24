@@ -19,15 +19,10 @@ const QuestionItem = ({ question, num }) => {
   };
 
   return (
-    <Card className=' mb-2 w-100'>
+    <Card className=' mb-2' style={{ minWidth: '60vw' }}>
       <Card.Header>
         <Card.Title>
-          <span className='me-2'>{num}-</span>
-          <a
-            className='text-muted text-uppercase'
-            data-toggle='collapse'
-            href='#question1'
-          >
+          <a className='text-muted ' data-toggle='collapse' href='#question1'>
             {question.title}
             <AiOutlineDown
               onClick={() => setShow((prev) => (prev = !prev))}

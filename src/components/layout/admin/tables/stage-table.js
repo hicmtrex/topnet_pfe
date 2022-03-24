@@ -61,6 +61,8 @@ const StagerTable = ({ stage }) => {
       {edit ? (
         <td>
           <FormSelect
+            className=' form-select-sm px-5'
+            style={{ fontSize: '10px' }}
             onChange={(e) => setStatus(e.target.value)}
             value={status}
           >
@@ -81,19 +83,12 @@ const StagerTable = ({ stage }) => {
       )}
 
       <td className='text-end'>
-        {edit ? (
+        {edit && (
           <FaTimes
             style={{ cursor: 'pointer', color: 'red', marginRight: '5px' }}
             size={'1.5rem'}
             onClick={() => setEdit(false)}
           />
-        ) : (
-          <Link
-            to={`/admin/stages/${stage._id}`}
-            className='  btn-sm  btn-neutral text-primary border'
-          >
-            View
-          </Link>
         )}
         {userInfo.user.coordinator && (
           <>
@@ -102,7 +97,7 @@ const StagerTable = ({ stage }) => {
                 className=' btn-sm  btn-neutral text-primary mx-2'
                 onClick={onUpdate}
               >
-                Edit
+                Update
               </Button>
             ) : (
               <Button

@@ -13,7 +13,7 @@ const AddTest = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [answers, setAnswers] = useState([]);
-  const [rightAnswer, setRightAnswer] = useState(1);
+  //const [rightAnswer, setRightAnswer] = useState('');
   const [formData, setFormData] = useState({
     categories: 'computer science',
     topics: 'C++',
@@ -23,6 +23,7 @@ const AddTest = () => {
     answer2: '',
     answer3: '',
     answer4: '',
+    rightAnswer: '',
   });
 
   const {
@@ -34,6 +35,7 @@ const AddTest = () => {
     answer2,
     answer3,
     answer4,
+    rightAnswer,
   } = formData;
 
   const onChange = (e) => {
@@ -60,7 +62,7 @@ const AddTest = () => {
       },
     ]);
   };
-
+  console.log(rightAnswer);
   const onSubmit = (e) => {
     e.preventDefault();
 
@@ -71,7 +73,7 @@ const AddTest = () => {
       content,
       answers,
     };
-
+    console.log(newUser);
     dispatch(createQuestion(newUser));
     navigate('/admin/test-psychotechnique');
   };
@@ -211,7 +213,8 @@ const AddTest = () => {
                       <Form.Label>Right Answer</Form.Label>
                       <div className='d-flex '>
                         <Form.Select
-                          onChange={(e) => setRightAnswer(e.target.value)}
+                          name='rightAnswer'
+                          onChange={onChange}
                           value={rightAnswer}
                           style={{ fontSize: '20px' }}
                           className='text-center'

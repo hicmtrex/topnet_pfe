@@ -15,15 +15,20 @@ export const userLogin = createAsyncThunk(
   'users/login',
   async (user, thunkAPI) => {
     try {
-      const res = await axios.post('/api/users/login', user, {
+      const { data } = await axios.post('/api/users/login', user, {
         headers: {
           Accpet: 'application/json',
         },
       });
-      if (res.data) {
-        toast.success(`Welcome ${res.data.user.first_name}`);
-        localStorage.setItem(LOCAL_STORAGE.admin, JSON.stringify(res.data));
-        return res.data;
+      if (data?.user.status === true) {
+        toast(`Welcome ${data.user.first_name}`, {
+          icon: '👏',
+        });
+        localStorage.setItem(LOCAL_STORAGE.admin, JSON.stringify(data));
+        return data;
+      } else {
+        toast.error('Your Account is deactivated!');
+        return data;
       }
     } catch (error) {
       const message = setError(error);

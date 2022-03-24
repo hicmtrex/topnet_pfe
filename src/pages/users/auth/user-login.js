@@ -7,9 +7,11 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Layout from '../../../components/layout/layout';
 import { userLogin } from '../../../store/users/user-loginSlice';
+import Title from '../../../components/UI/typography/title';
+import toast from 'react-hot-toast';
 
 const UserLogin = () => {
-  const { userInfo } = useSelector((state) => state.userLogin);
+  const { userInfo, loading } = useSelector((state) => state.userLogin);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
@@ -21,7 +23,7 @@ const UserLogin = () => {
   };
 
   useEffect(() => {
-    if (userInfo) {
+    if (userInfo?.user.status === true) {
       navigate('/');
     }
   }, [userInfo, navigate]);
@@ -35,9 +37,9 @@ const UserLogin = () => {
               <Col lg={6}>
                 <div className='p-5'>
                   <div className='mb-5'>
-                    <h3 className='h4 font-weight-bold'>Login your account</h3>
+                    <Title title='Login' message='your admin account' />
                   </div>
-                  <h6 className='h5 mb-0'>Admin Login</h6>
+
                   <p className='text-muted mt-2 mb-5'>
                     If You Really Want To Know, Look In The Register.
                   </p>
@@ -76,7 +78,7 @@ const UserLogin = () => {
                     </Form.Group>
                     <Button
                       type='submit'
-                      variant='primary'
+                      variant='warning'
                       className='col-11 mt-3 '
                     >
                       Login

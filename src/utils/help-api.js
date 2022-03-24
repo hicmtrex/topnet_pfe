@@ -7,8 +7,6 @@ export const roleCheck = (u) => {
     return 'Service Rh';
   } else if (u.encadrant === true) {
     return 'Encadrant ';
-  } else {
-    return 'Stagiaire';
   }
 };
 

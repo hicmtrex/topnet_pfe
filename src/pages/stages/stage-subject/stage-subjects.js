@@ -17,11 +17,8 @@ const StageSubject = () => {
 
   return (
     <Layout>
-      <Row
-        style={{ height: '80vh' }}
-        className='d-flex justify-content-center align-items-center'
-      >
-        <Title title={'Offer'} message='De Stage' />
+      <Title title={'Offer'} message='De Stage' />
+      <Row className='d-flex justify-content-center align-items-center mt-5'>
         <Col md={4}>
           <Card>
             <Card.Img
@@ -31,7 +28,7 @@ const StageSubject = () => {
               src='/assets/images/stage_ob.jpg'
             />
             <Card.Body>
-              <Card.Title as='h2'>Stage D’observation </Card.Title>
+              <Card.Title as='h2'>Stage d’observation </Card.Title>
               <Card.Text>
                 Some quick example text to build on the card title and make up
                 the bulk of the card's content.
@@ -55,7 +52,7 @@ const StageSubject = () => {
               src='/assets/images/stage_pfe.jpg'
             />
             <Card.Body>
-              <Card.Title as='h2'>Stage PFE</Card.Title>
+              <Card.Title as='h2'>Stage Pfe</Card.Title>
               <Card.Text>
                 Some quick example text to build on the card title and make up
                 the bulk of the card's content.
@@ -79,7 +76,7 @@ const StageSubject = () => {
               src='/assets/images/stage_perfec.jpg'
             />
             <Card.Body>
-              <Card.Title as='h2'>Stage De Perfectionnement</Card.Title>
+              <Card.Title as='h2'>Stage de perfectionnement</Card.Title>
               <Card.Text>
                 Some quick example text to build on the card title and make up
                 the bulk of the card's content.

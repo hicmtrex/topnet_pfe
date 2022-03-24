@@ -5,12 +5,11 @@ import { FaUserAlt } from 'react-icons/fa';
 import { stageLogout } from '../../../store/stages/stage-loginSlice';
 import './navbar.css';
 import { userLogout } from '../../../store/users/user-loginSlice';
-import Loader from '../../UI/loader';
 import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
   const { userInfo } = useSelector((state) => state.stageLogin);
-  const { userInfo: admin, loading } = useSelector((state) => state.userLogin);
+  const { userInfo: admin } = useSelector((state) => state.userLogin);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -20,7 +19,6 @@ const Header = () => {
     navigate('/stages/auth-login');
   };
 
-  if (loading) return <Loader />;
   return (
     <header>
       <Navbar
@@ -47,7 +45,7 @@ const Header = () => {
 
               <Nav.Link href='/#contact'>Contact</Nav.Link>
             </Nav>
-            {userInfo || admin ? (
+            {userInfo?.user.status === true || admin?.user.status === true ? (
               <Nav className='d-flex align-items-center mx-5'>
                 <NavDropdown
                   title={

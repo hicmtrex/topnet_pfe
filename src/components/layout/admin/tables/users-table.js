@@ -43,7 +43,10 @@ const UsersList = ({ user }) => {
           className='avatar avatar-sm me-3'
         />
 
-        <Link className='text-heading font-semibold' to='#'>
+        <Link
+          className='text-heading font-semibold'
+          to={`/admin/users/${user._id}`}
+        >
           {user.first_name} {user.last_name}
         </Link>
       </td>
@@ -98,19 +101,12 @@ const UsersList = ({ user }) => {
       )}
 
       <td className='text-end'>
-        {edit ? (
+        {edit && (
           <FaTimes
             style={{ cursor: 'pointer', color: 'red', marginRight: '5px' }}
             size={'1.5rem'}
             onClick={() => setEdit(false)}
           />
-        ) : (
-          <Link
-            to={`/admin/users/${user._id}`}
-            className='  btn-sm  btn-neutral text-primary border'
-          >
-            View
-          </Link>
         )}
         {userInfo.user.coordinator && (
           <>
@@ -119,7 +115,7 @@ const UsersList = ({ user }) => {
                 className=' btn-sm  btn-neutral text-primary mx-2'
                 onClick={() => onUpdate(user._id)}
               >
-                Edit
+                Update
               </Button>
             ) : (
               <Button
