@@ -23,8 +23,7 @@ const QuestionItem = ({ question, num }) => {
       <Card.Header>
         <Card.Title>
           <a className='text-muted ' data-toggle='collapse'>
-            {question.title}
-
+            {question.title.substring(0, 130)}...
             <AiOutlineDown
               onClick={() => setShow((prev) => (prev = !prev))}
               size={'1rem'}
@@ -51,6 +50,7 @@ const QuestionItem = ({ question, num }) => {
               {question.content === '0' ? null : (
                 <h5 className='my-3 bg-gray-300 p-5 rounded'>
                   {question.content}
+                  <img src={question.content} width={100} />
                 </h5>
               )}
             </div>

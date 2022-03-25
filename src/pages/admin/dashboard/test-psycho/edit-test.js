@@ -25,6 +25,7 @@ const EditTest = () => {
     answer2: question?.answers[1].a,
     answer3: question?.answers[2].a,
     answer4: question?.answers[3].a,
+    difficulty: question?.difficulty,
     rightAnswer: '',
   });
 
@@ -37,6 +38,7 @@ const EditTest = () => {
     answer2,
     answer3,
     answer4,
+    difficulty,
     rightAnswer,
   } = formData;
 
@@ -57,6 +59,7 @@ const EditTest = () => {
       title,
       content,
       answers,
+      difficulty,
     };
     console.log(newUser);
     dispatch(updateQuestion(newUser));
@@ -83,7 +86,7 @@ const EditTest = () => {
       },
     ]);
   }, [rightAnswer]);
-  console.log(rightAnswer);
+
   return (
     <DashboardLayout>
       {loading ? (
@@ -100,7 +103,7 @@ const EditTest = () => {
                     </div>
 
                     <Form onSubmit={onSubmit}>
-                      <Form.Group controlId='confirm_password'>
+                      <Form.Group controlId='categories'>
                         <Form.Label>Categorie</Form.Label>
                         <div className='d-flex '>
                           <Form.Select
@@ -112,8 +115,8 @@ const EditTest = () => {
                             <option value='computer science'>
                               Computer science
                             </option>
-                            <option value='computer science'>
-                              Computer science
+                            <option value='web development'>
+                              Web development
                             </option>
                             <option value='computer science'>
                               Computer science
@@ -138,7 +141,22 @@ const EditTest = () => {
                           </Form.Select>
                         </div>
                       </Form.Group>
-                      <Form.Group controlId='password'>
+                      <Form.Group controlId='difficulty'>
+                        <Form.Label>Difficulty</Form.Label>
+                        <div className='d-flex '>
+                          <Form.Select
+                            name='difficulty'
+                            onChange={onChange}
+                            value={difficulty}
+                            required
+                          >
+                            <option value='easy'>Easy</option>
+                            <option value='medium'>Medium</option>
+                            <option value='hard'>Hard</option>
+                          </Form.Select>
+                        </div>
+                      </Form.Group>
+                      <Form.Group controlId='title'>
                         <Form.Label> Title</Form.Label>
                         <div className='d-flex '>
                           <Form.Control
@@ -153,7 +171,7 @@ const EditTest = () => {
                           />
                         </div>
                       </Form.Group>
-                      <Form.Group controlId='confirm_password'>
+                      <Form.Group controlId='content'>
                         <Form.Label>Content (optinal)</Form.Label>
                         <div className='d-flex '>
                           <Form.Control
@@ -167,7 +185,7 @@ const EditTest = () => {
                           />
                         </div>
                       </Form.Group>
-                      <Form.Group controlId='confirm_password'>
+                      <Form.Group controlId='answer1'>
                         <Form.Label>Answer 1</Form.Label>
                         <div className='d-flex '>
                           <Form.Control
@@ -180,7 +198,7 @@ const EditTest = () => {
                           />
                         </div>
                       </Form.Group>
-                      <Form.Group controlId='confirm_password'>
+                      <Form.Group controlId='answer2'>
                         <Form.Label>Answer 2</Form.Label>
                         <div className='d-flex '>
                           <Form.Control
@@ -193,7 +211,7 @@ const EditTest = () => {
                           />
                         </div>
                       </Form.Group>
-                      <Form.Group controlId='confirm_password'>
+                      <Form.Group controlId='answer3'>
                         <Form.Label>Answer 3</Form.Label>
                         <div className='d-flex '>
                           <Form.Control
@@ -206,7 +224,7 @@ const EditTest = () => {
                           />
                         </div>
                       </Form.Group>
-                      <Form.Group controlId='confirm_password'>
+                      <Form.Group controlId='answer4'>
                         <Form.Label>Answer 4</Form.Label>
                         <div className='d-flex '>
                           <Form.Control
@@ -218,7 +236,7 @@ const EditTest = () => {
                           />
                         </div>
                       </Form.Group>
-                      <Form.Group controlId='confirm_password'>
+                      <Form.Group controlId='rightAnswer'>
                         <Form.Label>Right Answer</Form.Label>
                         <div className='d-flex '>
                           <Form.Select

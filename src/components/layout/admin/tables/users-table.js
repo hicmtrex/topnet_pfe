@@ -45,7 +45,7 @@ const UsersList = ({ user }) => {
         />
 
         <Link
-          className='text-heading font-semibold'
+          className=' font-semibold text-primary'
           to={`/admin/users/${user._id}`}
         >
           {user.first_name} {user.last_name}

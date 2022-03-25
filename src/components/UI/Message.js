@@ -1,9 +1,9 @@
 import React from 'react';
 import { Alert } from 'react-bootstrap';
 
-const Message = ({ setShow, children }) => {
+const Message = ({ setShow, children, variant }) => {
   return (
-    <Alert variant='danger' onClose={() => setShow(false)} dismissible>
+    <Alert variant={variant} onClose={() => setShow(false)} dismissible>
       <Alert.Heading>{children}</Alert.Heading>
     </Alert>
   );

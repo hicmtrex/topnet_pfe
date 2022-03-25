@@ -3,7 +3,6 @@ import { Button, Form, Row, Col, Card } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import DashboardLayout from '../../../../components/layout/admin/dashboard-layout';
 import { useDispatch } from 'react-redux';
-import { createUser } from '../../../../store/users/add-userSlice';
 import toast from 'react-hot-toast';
 import FormContainer from '../../../../components/UI/form-container';
 import { createQuestion } from '../../../../store/questions/create-question';
@@ -13,7 +12,6 @@ const AddTest = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [answers, setAnswers] = useState([]);
-  //const [rightAnswer, setRightAnswer] = useState('');
   const [formData, setFormData] = useState({
     categories: 'computer science',
     topics: 'C++',
@@ -23,7 +21,8 @@ const AddTest = () => {
     answer2: '',
     answer3: '',
     answer4: '',
-    rightAnswer: '',
+    difficulty: 'easy',
+    rightAnswer: 'answer1',
   });
 
   const {
@@ -35,6 +34,7 @@ const AddTest = () => {
     answer2,
     answer3,
     answer4,
+    difficulty,
     rightAnswer,
   } = formData;
 
@@ -44,7 +44,7 @@ const AddTest = () => {
       [e.target.name]: e.target.value,
     }));
   };
-  console.log(rightAnswer);
+
   const onSubmit = (e) => {
     e.preventDefault();
 
@@ -54,8 +54,9 @@ const AddTest = () => {
       title,
       content,
       answers,
+      difficulty,
     };
-    console.log(newUser);
+
     dispatch(createQuestion(newUser));
     navigate('/admin/test-psychotechnique');
   };
@@ -105,8 +106,8 @@ const AddTest = () => {
                           <option value='computer science'>
                             Computer science
                           </option>
-                          <option value='computer science'>
-                            Computer science
+                          <option value='web development'>
+                            Web development
                           </option>
                           <option value='computer science'>
                             Computer science
@@ -131,7 +132,22 @@ const AddTest = () => {
                         </Form.Select>
                       </div>
                     </Form.Group>
-                    <Form.Group controlId='password'>
+                    <Form.Group controlId='difficulty'>
+                      <Form.Label>Difficulty</Form.Label>
+                      <div className='d-flex '>
+                        <Form.Select
+                          name='difficulty'
+                          onChange={onChange}
+                          value={difficulty}
+                          required
+                        >
+                          <option value='easy'>Easy</option>
+                          <option value='medium'>Medium</option>
+                          <option value='hard'>Hard</option>
+                        </Form.Select>
+                      </div>
+                    </Form.Group>
+                    <Form.Group controlId='title'>
                       <Form.Label> Title</Form.Label>
                       <div className='d-flex '>
                         <Form.Control
@@ -146,7 +162,7 @@ const AddTest = () => {
                         />
                       </div>
                     </Form.Group>
-                    <Form.Group controlId='confirm_password'>
+                    <Form.Group controlId='content'>
                       <Form.Label>Content (optinal)</Form.Label>
                       <div className='d-flex '>
                         <Form.Control
@@ -160,7 +176,7 @@ const AddTest = () => {
                         />
                       </div>
                     </Form.Group>
-                    <Form.Group controlId='confirm_password'>
+                    <Form.Group controlId='answer1'>
                       <Form.Label>Answer 1</Form.Label>
                       <div className='d-flex '>
                         <Form.Control
@@ -173,7 +189,7 @@ const AddTest = () => {
                         />
                       </div>
                     </Form.Group>
-                    <Form.Group controlId='confirm_password'>
+                    <Form.Group controlId='answer2'>
                       <Form.Label>Answer 2</Form.Label>
                       <div className='d-flex '>
                         <Form.Control
@@ -186,7 +202,7 @@ const AddTest = () => {
                         />
                       </div>
                     </Form.Group>
-                    <Form.Group controlId='confirm_password'>
+                    <Form.Group controlId='answer3'>
                       <Form.Label>Answer 3</Form.Label>
                       <div className='d-flex '>
                         <Form.Control
@@ -195,11 +211,10 @@ const AddTest = () => {
                           onChange={onChange}
                           value={answer3}
                           placeholder
-                          required
                         />
                       </div>
                     </Form.Group>
-                    <Form.Group controlId='confirm_password'>
+                    <Form.Group controlId='answer4'>
                       <Form.Label>Answer 4</Form.Label>
                       <div className='d-flex '>
                         <Form.Control
@@ -207,11 +222,10 @@ const AddTest = () => {
                           onChange={onChange}
                           value={answer4}
                           type='text'
-                          required
                         />
                       </div>
                     </Form.Group>
-                    <Form.Group controlId='confirm_password'>
+                    <Form.Group controlId='rightAnswer'>
                       <Form.Label>Right Answer</Form.Label>
                       <div className='d-flex '>
                         <Form.Select

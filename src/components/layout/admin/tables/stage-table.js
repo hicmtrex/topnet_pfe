@@ -40,7 +40,7 @@ const StagerTable = ({ stage }) => {
         />
 
         <Link
-          className='text-heading font-semibold'
+          className=' font-semibold text-primary'
           to={`/admin/stages/${stage._id}`}
         >
           {stage.first_name} {stage.last_name}
