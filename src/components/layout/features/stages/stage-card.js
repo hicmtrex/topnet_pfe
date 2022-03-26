@@ -1,10 +1,17 @@
 import React from 'react';
 import { Card, Image } from 'react-bootstrap';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { setSelectedStage } from '../../../../store/questions/quiz/stage-answers';
 
 const StageCard = ({ stage }) => {
+  const dispatch = useDispatch();
+
   return (
-    <Link to='/stages/subjects'>
+    <Link
+      to='/stages/subjects'
+      onClick={() => dispatch(setSelectedStage(stage.title))}
+    >
       <Card className=' border-hover-primary hover-scale'>
         <Card.Body>
           <div className='text-primary mb-5'>

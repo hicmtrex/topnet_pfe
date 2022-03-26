@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Card, Col, Row, Image, ListGroup } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { getStageTest } from '../../../store/questions/quiz/getstage-answerSlice';
 import './user-profile.css';
 
 const StagerProfile = ({ userInfo }) => {
+  const { results } = useSelector((state) => state.stageTestResult);
+  const dispatch = useDispatch();
+  console.log(results);
+  useEffect(() => {
+    dispatch(getStageTest());
+  }, []);
   return (
     <div className='main-body'>
       <Row className=' gutters-sm'>
@@ -109,71 +117,41 @@ const StagerProfile = ({ userInfo }) => {
           </div>
         </Col>
         <Row className=' gutters-sm'>
-          <Col md={4} className=' mb-3'>
-            <Card>
-              <Card.Body>
-                <h6 className='d-flex align-items-center mb-3'>
-                  <i className='material-icons text-info mr-2'>assignment</i>
-                  Project Status
-                </h6>
-                <small>Web Design</small>
-                <div className='progress mb-3' style={{ height: '5px' }}>
-                  <div
-                    className='progress-bar bg-primary'
-                    role='progressbar'
-                    style={{ width: '80%' }}
-                    aria-valuenow={80}
-                    aria-valuemin={0}
-                    aria-valuemax={100}
-                  />
-                </div>
-                <small>Website Markup</small>
-                <div className='progress mb-3' style={{ height: '5px' }}>
-                  <div
-                    className='progress-bar bg-primary'
-                    role='progressbar'
-                    style={{ width: '72%' }}
-                    aria-valuenow={72}
-                    aria-valuemin={0}
-                    aria-valuemax={100}
-                  />
-                </div>
-                <small>One Page</small>
-                <div className='progress mb-3' style={{ height: '5px' }}>
-                  <div
-                    className='progress-bar bg-primary'
-                    role='progressbar'
-                    style={{ width: '89%' }}
-                    aria-valuenow={89}
-                    aria-valuemin={0}
-                    aria-valuemax={100}
-                  />
-                </div>
-                <small>Mobile Template</small>
-                <div className='progress mb-3' style={{ height: '5px' }}>
-                  <div
-                    className='progress-bar bg-primary'
-                    role='progressbar'
-                    style={{ width: '55%' }}
-                    aria-valuenow={55}
-                    aria-valuemin={0}
-                    aria-valuemax={100}
-                  />
-                </div>
-                <small>Backend API</small>
-                <div className='progress mb-3' style={{ height: '5px' }}>
-                  <div
-                    className='progress-bar bg-primary'
-                    role='progressbar'
-                    style={{ width: '66%' }}
-                    aria-valuenow={66}
-                    aria-valuemin={0}
-                    aria-valuemax={100}
-                  />
-                </div>
-              </Card.Body>
-            </Card>
-          </Col>
+          {results.length === 0 ? null : (
+            <Col md={4} className=' mb-3'>
+              <Card>
+                <Card.Body>
+                  <h6 className='d-flex align-items-center mb-3'>
+                    <i className='material-icons text-info mr-2'>
+                      Test psychotechnique results
+                    </i>
+                  </h6>
+                  {results.map((result) => (
+                    <div key={result._id}>
+                      <small>{result.categories}</small>
+                      <small
+                        className={`float-md-end ${
+                          result.result ? 'text-success' : 'text-danger'
+                        }`}
+                      >
+                        {result.result ? 'Aproved' : 'Rejected'}
+                      </small>
+                      <div className='progress mb-3' style={{ height: '5px' }}>
+                        <div
+                          className='progress-bar bg-primary'
+                          role='progressbar'
+                          style={{ width: `${result.score}0%` }}
+                          aria-valuenow={result.score * 10}
+                          aria-valuemin={0}
+                          aria-valuemax={100}
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </Card.Body>
+              </Card>
+            </Col>
+          )}
         </Row>
       </Row>
     </div>

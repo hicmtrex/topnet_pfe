@@ -19,6 +19,8 @@ import questionDetailSlice from './questions/question-detailSlice';
 import updateQuestionSlice from './questions/update-question';
 import stageQuestionSlice from './questions/quiz/stage-quiz';
 import { clientProvider } from '../utils/axios-stage';
+import saveStageResultSlice from './questions/quiz/stage-answers';
+import getStageTestSlice from './questions/quiz/getstage-answerSlice';
 
 const reducers = combineReducers({
   stageLogin: loginStageSlice.reducer,
@@ -43,6 +45,8 @@ const reducers = combineReducers({
   updateQuestion: updateQuestionSlice.reducer,
   removeQuestion: deleteQuestionSlice.reducer,
   stageQuestion: stageQuestionSlice.reducer,
+  stageResult: saveStageResultSlice.reducer,
+  stageTestResult: getStageTestSlice.reducer,
 });
 
 const store = configureStore({

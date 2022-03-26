@@ -11,7 +11,7 @@ const HomePage = () => {
     <Layout>
       <Row className=' justify-content-center text-center mt-5 pt-5 mb-3'>
         <div className='col-xl-6 col-lg-8 col-sm-10'>
-          <Title title={'Catalogue'} message=' De Stage' />
+          <Title title={'Catalogue'} message=' de Stage' />
 
           <p className='text-muted mb-0'>
             We bring the results while helping you achieve cost and time savings
