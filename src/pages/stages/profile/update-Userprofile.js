@@ -95,7 +95,7 @@ const UpdateUserProfile = () => {
                 <Image
                   roundedCircle
                   className='img-account-profile mb-2'
-                  src='http://bootdey.com/img/Content/avatar/avatar1.png'
+                  src='https://www.pngitem.com/pimgs/m/524-5246388_anonymous-user-hd-png-download.png'
                   alt=''
                 />
 

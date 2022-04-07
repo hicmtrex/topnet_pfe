@@ -30,7 +30,6 @@ export const stagerLogin = createAsyncThunk(
       return data;
     } catch (error) {
       const message = setError(error);
-      toast.error(message);
       return thunkAPI.rejectWithValue(message);
     }
   }
@@ -44,6 +43,9 @@ const loginStageSlice = createSlice({
       state.userInfo = null;
       localStorage.removeItem(LOCAL_STORAGE.auth);
       localStorage.removeItem(LOCAL_STORAGE.admin);
+    },
+    resetError: (state) => {
+      state.error = null;
     },
   },
   extraReducers: (builder) => {
@@ -61,5 +63,5 @@ const loginStageSlice = createSlice({
       });
   },
 });
-export const { stageLogout } = loginStageSlice.actions;
+export const { stageLogout, resetError } = loginStageSlice.actions;
 export default loginStageSlice;

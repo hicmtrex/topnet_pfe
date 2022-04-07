@@ -40,7 +40,7 @@ const UsersList = ({ user }) => {
         <Image
           roundedCircle
           alt='avatar'
-          src='https://bootdey.com/img/Content/avatar/avatar7.png'
+          src='https://openclipart.org/download/247319/abstract-user-flat-3.svg'
           className='avatar avatar-sm me-3'
         />
 

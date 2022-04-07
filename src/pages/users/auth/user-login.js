@@ -95,13 +95,6 @@ const UserLogin = () => {
           </Card.Body>
           {/* end card-body */}
         </Card>
-        {/* end card */}
-        <p className='text-muted text-center mt-3 mb-0'>
-          Don't have an account?{' '}
-          <Link to='/stages/auth-register' className='text-primary ml-1'>
-            Register
-          </Link>
-        </p>
       </FormContainer>
     </Layout>
   );

@@ -35,7 +35,11 @@ const StagerTable = ({ stage }) => {
         <Image
           roundedCircle
           alt='...'
-          src='https://bootdey.com/img/Content/avatar/avatar7.png'
+          src={
+            stage.image
+              ? stage.image
+              : 'https://openclipart.org/download/247319/abstract-user-flat-3.svg'
+          }
           className='avatar avatar-sm  me-3'
         />
 

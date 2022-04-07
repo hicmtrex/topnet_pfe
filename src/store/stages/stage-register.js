@@ -18,7 +18,6 @@ export const stagerRegister = createAsyncThunk(
       }
     } catch (error) {
       const message = setError(error);
-      toast.error(message);
       return thunkAPI.rejectWithValue(message);
     }
   }
@@ -33,7 +32,11 @@ const initialState = {
 const registerStageSlice = createSlice({
   name: 'stages-register',
   initialState,
-  reducers: {},
+  reducers: {
+    resetErrorRegister: (state) => {
+      state.error = null;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(stagerRegister.pending, (state) => {
@@ -49,5 +52,5 @@ const registerStageSlice = createSlice({
       });
   },
 });
-
+export const { resetErrorRegister } = registerStageSlice.actions;
 export default registerStageSlice;

@@ -8,10 +8,11 @@ import './user-profile.css';
 const StagerProfile = ({ userInfo }) => {
   const { results } = useSelector((state) => state.stageTestResult);
   const dispatch = useDispatch();
-  console.log(results);
+
   useEffect(() => {
     dispatch(getStageTest());
-  }, []);
+  }, [dispatch]);
+
   return (
     <div className='main-body'>
       <Row className=' gutters-sm'>
@@ -20,7 +21,11 @@ const StagerProfile = ({ userInfo }) => {
             <Card.Body>
               <div className='d-flex flex-column align-items-center text-center'>
                 <Image
-                  src='https://bootdey.com/img/Content/avatar/avatar7.png'
+                  src={
+                    userInfo.user.image
+                      ? userInfo.user.image
+                      : 'https://openclipart.org/download/247319/abstract-user-flat-3.svg'
+                  }
                   alt='Admin'
                   className='rounded-circle'
                   width={150}
@@ -118,7 +123,7 @@ const StagerProfile = ({ userInfo }) => {
         </Col>
         <Row className=' gutters-sm'>
           {results.length === 0 ? null : (
-            <Col md={4} className=' mb-3'>
+            <Col md={10} className=' mb-3'>
               <Card>
                 <Card.Body>
                   <h6 className='d-flex align-items-center mb-3'>
@@ -134,6 +139,7 @@ const StagerProfile = ({ userInfo }) => {
                           result.result ? 'text-success' : 'text-danger'
                         }`}
                       >
+                        {result.score}/10{' '}
                         {result.result ? 'Aproved' : 'Rejected'}
                       </small>
                       <div className='progress mb-3' style={{ height: '5px' }}>

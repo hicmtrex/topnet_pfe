@@ -1,0 +1,12 @@
+.stage__card {
+  transition: all 0.3s;
+}
+
+.stage__card-img {
+  width: 350px;
+  height: 250px;
+}
+
+.stage__card:hover {
+  background: rgba(228, 224, 224, 0.3);
+}

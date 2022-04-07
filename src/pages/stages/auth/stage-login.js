@@ -6,7 +6,10 @@ import { MdAlternateEmail } from 'react-icons/md';
 import { RiLockPasswordFill } from 'react-icons/ri';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { stagerLogin } from '../../../store/stages/stage-loginSlice';
+import {
+  resetError,
+  stagerLogin,
+} from '../../../store/stages/stage-loginSlice';
 import './stage-auth.css';
 import { LOCAL_STORAGE } from '../../../utils/help-api';
 import toast from 'react-hot-toast';
@@ -46,11 +49,14 @@ const StageLogin = () => {
                     <Title title='Login' message='your account' />{' '}
                     <GoSignIn size='2.5rem' className='ms-5' />
                   </div>
-                  <h6 className='h5 mb-0'>Just Do Register.</h6>
-                  {/* <p className='text-muted mt-2 mb-5'>
-                    If You Really Want To Know, Look In The Register.
-                  </p> */}
-
+                  {error && (
+                    <Message
+                      onClose={() => dispatch(resetError())}
+                      variant='danger'
+                    >
+                      {error}
+                    </Message>
+                  )}
                   <Form onSubmit={loginHandler}>
                     <Form.Group controlId='email'>
                       <Form.Label>Email</Form.Label>

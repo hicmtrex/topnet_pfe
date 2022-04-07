@@ -35,10 +35,10 @@ const StageSubject = () => {
               </Card.Text>
               <Button
                 onClick={startQuiz}
-                variant='primary'
+                variant='warning'
                 className='mt-2 col-12'
               >
-                Apply Now
+                Start Now
               </Button>
             </Card.Body>
           </Card>
@@ -59,10 +59,10 @@ const StageSubject = () => {
               </Card.Text>
               <Button
                 onClick={startQuiz}
-                variant='primary'
+                variant='warning'
                 className='mt-2 col-12'
               >
-                Apply Now
+                Start Now
               </Button>
             </Card.Body>
           </Card>
@@ -83,10 +83,10 @@ const StageSubject = () => {
               </Card.Text>
               <Button
                 onClick={startQuiz}
-                variant='primary'
+                variant='warning'
                 className='mt-2 col-12'
               >
-                Apply Now
+                Start Now
               </Button>
             </Card.Body>
           </Card>

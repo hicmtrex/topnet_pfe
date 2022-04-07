@@ -1,6 +1,5 @@
 import React from 'react';
-import { Card, Col, Row, Image } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Col, Row } from 'react-bootstrap';
 import StageCard from '../components/layout/features/stages/stage-card';
 import Layout from '../components/layout/layout';
 import Title from '../components/UI/typography/title';
@@ -24,7 +23,15 @@ const HomePage = () => {
         data-aos='fade-up'
       >
         {stages.map((stage) => (
-          <Col md={4} xl={4} lg={4} sm={6} className=' my-3' key={stage.id}>
+          <Col
+            md={6}
+            xl={4}
+            lg={4}
+            sm={12}
+            xs={12}
+            className=' my-3'
+            key={stage.id}
+          >
             <StageCard stage={stage} />
           </Col>
         ))}

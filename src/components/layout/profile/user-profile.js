@@ -14,7 +14,7 @@ const UserProfile = ({ userInfo }) => {
             <Card.Body>
               <div className='d-flex flex-column align-items-center text-center'>
                 <Image
-                  src='https://bootdey.com/img/Content/avatar/avatar7.png'
+                  src='https://openclipart.org/download/247319/abstract-user-flat-3.svg'
                   alt='Admin'
                   className='rounded-circle'
                   width={150}

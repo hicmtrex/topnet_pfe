@@ -4,13 +4,19 @@ import Layout from '../../../components/layout/layout';
 import { FaUserPlus } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { stagerRegister } from '../../../store/stages/stage-register';
+import {
+  resetErrorRegister,
+  stagerRegister,
+} from '../../../store/stages/stage-register';
 import './stage-auth.css';
 import Title from '../../../components/UI/typography/title';
+import Message from '../../../components/UI/Message';
 
 const StageRegister = () => {
   const { userInfo } = useSelector((state) => state.stageLogin);
-  const { success } = useSelector((state) => state.stageRegister);
+  const { success, error } = useSelector((state) => state.stageRegister);
+  const [image, setImage] = useState();
+  const [validated, setValidated] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -19,12 +25,12 @@ const StageRegister = () => {
     email: '',
     phone: '',
     cin: '',
-    passport: '',
     niveau: 'bac',
-    domaine: '',
+    domaine: 'Developpeur web',
     password: '',
     password2: '',
   });
+
   const {
     firstName,
     lastName,
@@ -32,7 +38,6 @@ const StageRegister = () => {
     password,
     password2,
     cin,
-    passport,
     phone,
     domaine,
     niveau,
@@ -47,6 +52,24 @@ const StageRegister = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
+    const form = e.currentTarget;
+    if (form.checkValidity() === false) {
+      e.preventDefault();
+    }
+
+    setValidated(true);
+    const data = new FormData();
+    data.append('first_name', firstName);
+    data.append('last_name', firstName);
+    image && data.append('image', image);
+    data.append('email', email);
+    data.append('password', password);
+    data.append('password_confirmation', password2);
+    data.append('cin', cin);
+    data.append('phone', phone);
+    data.append('domaine', domaine);
+    data.append('niveau', niveau);
+
     const newUser = {
       first_name: firstName,
       last_name: lastName,
@@ -54,12 +77,11 @@ const StageRegister = () => {
       password,
       password_confirmation: password2,
       cin,
-      passport,
       phone,
       domaine,
       niveau,
     };
-    dispatch(stagerRegister(newUser));
+    dispatch(stagerRegister(data));
   };
 
   useEffect(() => {
@@ -82,15 +104,21 @@ const StageRegister = () => {
                   <div className='mb-5 d-flex align-items-center'>
                     <Title title='Register' message='for free' />
                     <FaUserPlus size='2.5rem' className='ms-5' />
-                    {/* <h2 className='font-weight-bold'>
-                      Register for free
-                      <span className='ms-5'>
-                        <FaUserPlus size='2.5rem' />
-                      </span>
-                    </h2> */}
                   </div>
-
-                  <Form className='form__register' onSubmit={onSubmit}>
+                  {error && (
+                    <Message
+                      onClose={() => dispatch(resetErrorRegister())}
+                      variant={'danger'}
+                    >
+                      {error}
+                    </Message>
+                  )}
+                  <Form
+                    noValidate
+                    validated={validated}
+                    className='form__register'
+                    onSubmit={onSubmit}
+                  >
                     <Row>
                       <Col md={6}>
                         <Form.Group controlId='firstName'>
@@ -104,6 +132,9 @@ const StageRegister = () => {
                             value={firstName}
                             required
                           />
+                          <Form.Control.Feedback>
+                            Looks good!
+                          </Form.Control.Feedback>
                         </Form.Group>
                       </Col>
                       <Col md={6}>
@@ -118,6 +149,9 @@ const StageRegister = () => {
                             value={lastName}
                             required
                           />
+                          <Form.Control.Feedback>
+                            Looks good!
+                          </Form.Control.Feedback>
                         </Form.Group>
                       </Col>
                       <Col md={6}>
@@ -132,12 +166,14 @@ const StageRegister = () => {
                             value={email}
                             required
                           />
+                          <Form.Control.Feedback type='invalid'>
+                            Please choose a valid email.
+                          </Form.Control.Feedback>
                         </Form.Group>
                       </Col>
                       <Col md={6}>
                         <Form.Group controlId='cin'>
-                          <Form.Label>Cin</Form.Label>
-
+                          <Form.Label>Cin or Passport</Form.Label>
                           <Form.Control
                             type='number'
                             name='cin'
@@ -146,10 +182,13 @@ const StageRegister = () => {
                             value={cin}
                             required
                           />
+                          <Form.Control.Feedback>
+                            Looks good!
+                          </Form.Control.Feedback>
                         </Form.Group>
                       </Col>
                       <Col md={6}>
-                        <Form.Group controlId='cin'>
+                        <Form.Group controlId='password'>
                           <Form.Label>Password</Form.Label>
 
                           <Form.Control
@@ -160,10 +199,13 @@ const StageRegister = () => {
                             value={password}
                             required
                           />
+                          <Form.Control.Feedback type='invalid'>
+                            Please choose a valid password
+                          </Form.Control.Feedback>
                         </Form.Group>
                       </Col>
                       <Col md={6}>
-                        <Form.Group controlId='cin'>
+                        <Form.Group controlId='password2'>
                           <Form.Label>Password Confirmation</Form.Label>
 
                           <Form.Control
@@ -174,10 +216,13 @@ const StageRegister = () => {
                             value={password2}
                             required
                           />
+                          <Form.Control.Feedback type='invalid'>
+                            Please choose a valid password
+                          </Form.Control.Feedback>
                         </Form.Group>
                       </Col>
                       <Col md={6}>
-                        <Form.Group controlId='cin'>
+                        <Form.Group controlId='phone'>
                           <Form.Label>Phone</Form.Label>
                           <Form.Control
                             type='number'
@@ -187,24 +232,13 @@ const StageRegister = () => {
                             value={phone}
                             required
                           />
+                          <Form.Control.Feedback>
+                            Looks good!
+                          </Form.Control.Feedback>
                         </Form.Group>
                       </Col>
                       <Col md={6}>
-                        <Form.Group controlId='cin'>
-                          <Form.Label>Passport (optinal)</Form.Label>
-
-                          <Form.Control
-                            type='number'
-                            name='passport'
-                            placeholder='passport id'
-                            onChange={onChange}
-                            value={passport}
-                            required
-                          />
-                        </Form.Group>
-                      </Col>
-                      <Col md={6}>
-                        <Form.Group controlId='cin'>
+                        <Form.Group controlId='domaine'>
                           <Form.Label>Domaine</Form.Label>
                           <Form.Select
                             onChange={onChange}
@@ -212,7 +246,7 @@ const StageRegister = () => {
                             name='domaine'
                             required
                           >
-                            <option value=' Developpeur web'>
+                            <option value='Developpeur web'>
                               Développeur web
                             </option>
                             <option value='Technicien en informatique'>
@@ -237,6 +271,9 @@ const StageRegister = () => {
                             </option>
 
                             <option value='Marketing '>Marketing</option>
+                            <Form.Control.Feedback>
+                              Looks good!
+                            </Form.Control.Feedback>
                           </Form.Select>
                         </Form.Group>
                       </Col>
@@ -256,7 +293,24 @@ const StageRegister = () => {
                             <option value='licence'>Licence</option>
                             <option value='ingénierie'>Ingénierie</option>
                             <option value='master'>Master</option>
+                            <Form.Control.Feedback>
+                              Looks good!
+                            </Form.Control.Feedback>
                           </Form.Select>
+                        </Form.Group>
+                      </Col>
+                      <Col md={6}>
+                        <Form.Group controlId='firstName'>
+                          <Form.Label>Image (Optinal)</Form.Label>
+                          <Form.Control
+                            type='file'
+                            onChange={(e) => setImage(e.target.files[0])}
+                            name='image'
+                            required
+                          />
+                          <Form.Control.Feedback>
+                            Looks good!
+                          </Form.Control.Feedback>
                         </Form.Group>
                       </Col>
                       <Button
