@@ -68,13 +68,13 @@ const AddUser = () => {
       <Container>
         <Row className='justify-content-md-center '>
           <h1 className='text-center mb-2'>
-            Add User <FaUserPlus className='mx-2' size='2rem' />
+            Ajouter Utilisateur <FaUserPlus className='mx-2' size='2rem' />
           </h1>
 
           <Col md={6} className='shadow  main__bg-color rounded '>
             <Form onSubmit={onSubmit} className='p-5'>
               <Form.Group controlId='firstName'>
-                <Form.Label>First Name</Form.Label>
+                <Form.Label>Prénom</Form.Label>
                 <div className='d-flex'>
                   <Form.Control
                     type='text'
@@ -89,7 +89,7 @@ const AddUser = () => {
                 </div>
               </Form.Group>
               <Form.Group controlId='lastName'>
-                <Form.Label>Last Name</Form.Label>
+                <Form.Label>Nom</Form.Label>
                 <div className='d-flex'>
                   <Form.Control
                     type='text'
@@ -104,7 +104,7 @@ const AddUser = () => {
                 </div>
               </Form.Group>
               <Form.Group controlId='email'>
-                <Form.Label>Email Address</Form.Label>
+                <Form.Label>Adresse Mail</Form.Label>
                 <div className='d-flex'>
                   <Form.Control
                     type='email'
@@ -120,7 +120,7 @@ const AddUser = () => {
               </Form.Group>
 
               <Form.Group controlId='password'>
-                <Form.Label className='mb-2'>Password</Form.Label>
+                <Form.Label className='mb-2'>Mot de Passe </Form.Label>
                 <div className='d-flex'>
                   <Form.Control
                     type='password'
@@ -134,7 +134,7 @@ const AddUser = () => {
                 </div>
               </Form.Group>
               <Form.Group controlId='password2'>
-                <Form.Label>Confirm Password</Form.Label>
+                <Form.Label>Confirmer Mot de passe</Form.Label>
                 <div className='d-flex'>
                   <Form.Control
                     type='password'
@@ -163,7 +163,7 @@ const AddUser = () => {
               </Form.Group>
 
               <Form.Group controlId='domaine'>
-                <Form.Label>Domaine (optinal)</Form.Label>
+                <Form.Label>Domaine (optionnel)</Form.Label>
                 <div className='d-flex'>
                   <Form.Select
                     name='domaine'
@@ -186,7 +186,7 @@ const AddUser = () => {
               </Form.Group>
 
               <Button type='submit' className='mt-5 col-11'>
-                Submit
+                Envoyer
               </Button>
             </Form>
           </Col>

@@ -5,7 +5,7 @@ import clientAxios from '../../../utils/axios-stage';
 
 const initialState = {
   loading: false,
-  selectedStage: '',
+  selectedStage: null,
   success: false,
   error: null,
 };
@@ -33,6 +33,9 @@ const saveStageResultSlice = createSlice({
     setSelectedStage: (state, action) => {
       state.selectedStage = action.payload;
     },
+    resetSelectedStage: (state) => {
+      state.selectedStage = null;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -50,5 +53,6 @@ const saveStageResultSlice = createSlice({
       });
   },
 });
-export const { setSelectedStage } = saveStageResultSlice.actions;
+export const { setSelectedStage, resetSelectedStage } =
+  saveStageResultSlice.actions;
 export default saveStageResultSlice;

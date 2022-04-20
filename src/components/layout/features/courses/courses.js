@@ -9,7 +9,7 @@ const Courses = () => {
         <Row>
           <Col md={12}>
             <div className='section-heading'>
-              <h2 className='text-white mt-5'>Why choose Top Stage?</h2>
+              <h2 className='text-white mt-5'>Pourquoi choisir Top Stage?</h2>
             </div>
           </Col>
           <Col md={12}>
@@ -27,7 +27,7 @@ const Courses = () => {
                       />
                     </Col>
                     <Col md={6}>
-                      <h4>Best Education</h4>
+                      <h4>Meilleure éducation</h4>
                       <p>
                         Lorem ipsum dolor, sit amet consectetur adipisicing
                         elit. Accusamus odio non expedita! Dolore eligendi non
@@ -54,7 +54,7 @@ const Courses = () => {
                       />
                     </Col>
                     <Col md={6}>
-                      <h4>Top Level</h4>
+                      <h4>Top niveau</h4>
                       <p>
                         Lorem ipsum dolor, sit amet consectetur adipisicing
                         elit. Accusamus odio non expedita! Dolore eligendi non
@@ -80,7 +80,7 @@ const Courses = () => {
                       />
                     </Col>
                     <Col md={6}>
-                      <h4>Quality Meeting</h4>
+                      <h4>Réunion de qualité</h4>
                       <p>
                         Lorem ipsum dolor, sit amet consectetur adipisicing
                         elit. Accusamus odio non expedita! Dolore eligendi non

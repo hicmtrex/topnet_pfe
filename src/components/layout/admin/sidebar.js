@@ -80,13 +80,13 @@ const Sidebar = () => {
                 Profile
               </Link>
               <Link to='#' className='dropdown-item'>
-                Settings
+                Paramètres
               </Link>
               <Link to='#' className='dropdown-item'>
-                Billing
+                Facturation
               </Link>
               <hr className='dropdown-divider' />{' '}
-              <button className='dropdown-item'>Logout</button>
+              <button className='dropdown-item'>Se déconnecter</button>
             </div>
           </div>
         </div>
@@ -94,20 +94,22 @@ const Sidebar = () => {
           <ul className='navbar-nav'>
             <li className='nav-item  '>
               <Link className='nav-link p-5' to='/'>
-                <AiFillHome className='me-2' size={'1.5rem'} /> Home
+                <AiFillHome className='me-2' size={'1.5rem'} /> Accueil
               </Link>
             </li>
             <li className='nav-item '>
               <Link className='nav-link p-5' to='/admin/dashboard'>
-                <AiFillDashboard className='me-2' size={'1.5rem'} /> Dashboard
+                <AiFillDashboard className='me-2' size={'1.5rem'} /> Tableau de
+                bord
               </Link>
             </li>
-
-            <li className='nav-item '>
-              <Link className='nav-link p-5' to='/admin/users-list'>
-                <FaUserTie className='me-2' size={'1.5rem'} /> Users
-              </Link>
-            </li>
+            {userInfo.user.coordinator && (
+              <li className='nav-item '>
+                <Link className='nav-link p-5' to='/admin/users-list'>
+                  <FaUserTie className='me-2' size={'1.5rem'} /> Utilisateurs
+                </Link>
+              </li>
+            )}
             <li className='nav-item '>
               <Link className='nav-link p-5' to='/admin/stages-list'>
                 <HiUsers className='me-2' size={'1.5rem'} /> Stagiaires
@@ -121,107 +123,29 @@ const Sidebar = () => {
                 </Link>
               </li>
             )}
+            {userInfo.user.encadrant && (
+              <li className='nav-item '>
+                <Link className='nav-link p-5' to='/admin/sujet-stage'>
+                  <HiUsers className='me-2' size={'1.5rem'} /> Sujet de stage
+                </Link>
+              </li>
+            )}
           </ul>
 
           <hr className='navbar-divider my-5 opacity-20' />
-          <ul className='navbar-nav mb-md-4'>
-            <li>
-              <div
-                className='nav-link text-xs font-semibold text-uppercase text-muted ls-wide'
-                href='#'
-              >
-                Contacts
-                <span className='badge bg-soft-primary text-primary rounded-pill d-inline-flex align-items-center ms-4'>
-                  13
-                </span>
-              </div>
-            </li>
-            <li>
-              <a href='#' className='nav-link d-flex align-items-center'>
-                <div className='me-4'>
-                  <div className='position-relative d-inline-block text-white'>
-                    <img
-                      alt='Image Placeholder'
-                      src='https://images.unsplash.com/photo-1548142813-c348350df52b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80'
-                      className='avatar rounded-circle'
-                    />
-                    <span className='position-absolute bottom-2 end-2 transform translate-x-1/2 translate-y-1/2 border-2 border-solid border-current w-3 h-3 bg-success rounded-circle' />{' '}
-                  </div>
-                </div>
-                <div>
-                  <span className='d-block text-sm font-semibold'>
-                    Marie Claire
-                  </span>
-                  <span className='d-block text-xs text-muted font-regular'>
-                    Paris, FR
-                  </span>
-                </div>
-                <div className='ms-auto'>
-                  <i className='bi bi-chat' />
-                </div>
-              </a>
-            </li>
-            <li>
-              <a href='#' className='nav-link d-flex align-items-center'>
-                <div className='me-4'>
-                  <div className='position-relative d-inline-block text-white'>
-                    <span className='avatar bg-soft-warning text-warning rounded-circle'>
-                      JW
-                    </span>
-                    <span className='position-absolute bottom-2 end-2 transform translate-x-1/2 translate-y-1/2 border-2 border-solid border-current w-3 h-3 bg-success rounded-circle' />{' '}
-                  </div>
-                </div>
-                <div>
-                  <span className='d-block text-sm font-semibold'>
-                    Michael Jordan
-                  </span>
-                  <span className='d-block text-xs text-muted font-regular'>
-                    Bucharest, RO
-                  </span>
-                </div>
-                <div className='ms-auto'>
-                  <i className='bi bi-chat' />
-                </div>
-              </a>
-            </li>
-            <li>
-              <Link to='#' className='nav-link d-flex align-items-center'>
-                <div className='me-4'>
-                  <div className='position-relative d-inline-block text-white'>
-                    <Image
-                      alt='...'
-                      src='https://images.unsplash.com/photo-1610899922902-c471ae684eff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80'
-                      className='avatar rounded-circle'
-                    />
-                    <span className='position-absolute bottom-2 end-2 transform translate-x-1/2 translate-y-1/2 border-2 border-solid border-current w-3 h-3 bg-danger rounded-circle' />{' '}
-                  </div>
-                </div>
-                <div>
-                  <span className='d-block text-sm font-semibold'>
-                    Heather Wright
-                  </span>
-                  <span className='d-block text-xs text-muted font-regular'>
-                    London, UK
-                  </span>
-                </div>
-                <div className='ms-auto'>
-                  <i className='bi bi-chat' />
-                </div>
-              </Link>
-            </li>
-          </ul>
+
           <div className='' />
           <ul className='navbar-nav'>
             <li className='nav-item'>
               <LinkContainer to='/stages/profile'>
                 <Nav.Link>
-                  <i className='bi bi-person-square' /> My Account
+                  <i className='bi bi-person-square' /> Mon Compte
                 </Nav.Link>
               </LinkContainer>
             </li>
             <li className='nav-item'>
               <Nav.Link onClick={onLogout}>
-                <i className='bi bi-box-arrow-left' /> Logout
+                <i className='bi bi-box-arrow-left' /> Se déconnecte
               </Nav.Link>
             </li>
           </ul>

@@ -10,3 +10,8 @@
 .stage__card:hover {
   background: rgba(228, 224, 224, 0.3);
 }
+@media screen and (max-width: 1368px) {
+  .stage__card {
+    height: 500px;
+  }
+}

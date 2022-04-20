@@ -19,7 +19,7 @@ const UserDetail = () => {
 
   return (
     <Layout>
-      <Button onClick={() => navigate(-1)}>Go Back</Button>
+      <Button onClick={() => navigate(-1)}>Retour</Button>
       {loading || !user ? (
         <Loader />
       ) : (
@@ -169,7 +169,7 @@ const UserDetail = () => {
                 <div className='card-body'>
                   <div className='row'>
                     <div className='col-sm-3'>
-                      <h6 className='mb-0'>Full Name</h6>
+                      <h6 className='mb-0'>Nom Complet</h6>
                     </div>
                     <Col sm={9}>
                       {user?.first_name} {user?.last_name}
@@ -213,7 +213,7 @@ const UserDetail = () => {
                         <i className='material-icons text-info mr-2'>
                           assignment
                         </i>
-                        Project Status
+                        Statut de Projet
                       </h6>
                       <small>Web Design</small>
                       <div className='progress mb-3' style={{ height: '5px' }}>
@@ -280,7 +280,7 @@ const UserDetail = () => {
                         <i className='material-icons text-info mr-2'>
                           assignment
                         </i>
-                        Project Status
+                        Statut de Projet
                       </h6>
                       <small>Web Design</small>
                       <div className='progress mb-3' style={{ height: '5px' }}>

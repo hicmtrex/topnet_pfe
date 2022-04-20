@@ -51,12 +51,12 @@ const ResetPassword = () => {
               <Col lg={6}>
                 <div className='p-5'>
                   <div className='mb-5'>
-                    <h3 className='h4 font-weight-bold'>Reset your Password</h3>
+                    <h3 className='h4 font-weight-bold'>Réinitialisez votre mot de passe</h3>
                   </div>
 
                   <Form onSubmit={onSubmit}>
                     <Form.Group controlId='password'>
-                      <Form.Label>New Password</Form.Label>
+                      <Form.Label>Nouveau Mot de Passe</Form.Label>
                       <div className='d-flex '>
                         <Form.Control
                           type='password'
@@ -69,7 +69,7 @@ const ResetPassword = () => {
                       </div>
                     </Form.Group>
                     <Form.Group controlId='confirm_password'>
-                      <Form.Label>Repeat New Password</Form.Label>
+                      <Form.Label>Confirmer votre Mot de Passe</Form.Label>
                       <div className='d-flex '>
                         <Form.Control
                           type='password'
@@ -82,7 +82,7 @@ const ResetPassword = () => {
                       </div>
                     </Form.Group>
                     <Button type='submit' className='col-11 mt-3'>
-                      Confirm
+                      Confirmer
                     </Button>
                   </Form>
                 </div>

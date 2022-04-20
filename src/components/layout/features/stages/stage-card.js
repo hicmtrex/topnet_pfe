@@ -17,14 +17,13 @@ const StageCard = ({ stage }) => {
         <Card.Body>
           <div className='text-primary mb-5'>
             <Card.Img
-              className='stage__card-img'
-              rounded
+              className='stage__card-img rounded'
               src={stage.image}
               alt='stage-image'
             />
           </div>
           <h4 className='font-weight-bold mb-3'>{stage.title}</h4>
-          <p className='text-muted mb-0'>{stage.bio}</p>
+          <p className='text-muted mb-0'>{stage.description}</p>
         </Card.Body>
       </Card>
     </Link>

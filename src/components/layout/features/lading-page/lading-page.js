@@ -47,7 +47,7 @@ const Features = () => {
                         lobortis mi. In mollis eros a posuere imperdiet.
                       </p>
                       <div className='scroll-to-section'>
-                        <a href='#section2'>More Info.</a>
+                        <a href='#section2'>Plus d'Info.</a>
                       </div>
                     </div>
                   )}
@@ -64,7 +64,7 @@ const Features = () => {
                   <div className='content-show'>
                     <h4>
                       <FaGraduationCap size={'2.5rem'} className='me-2' />
-                      Virtual Class
+                      classe virtuelle
                     </h4>
                   </div>
                   {classShow && (
@@ -97,7 +97,7 @@ const Features = () => {
                   <div className='content-show'>
                     <h4>
                       <i className='fa fa-book' />
-                      Real Meeting
+                      Vraie rencontre
                     </h4>
                   </div>
                   {realShow && (
@@ -113,7 +113,7 @@ const Features = () => {
                         lobortis mi. In mollis eros a posuere imperdiet.
                       </p>
                       <div className='scroll-to-section'>
-                        <a href='#section4'>Read More</a>
+                        <a href='#section4'>Lire Plus</a>
                       </div>
                     </div>
                   )}

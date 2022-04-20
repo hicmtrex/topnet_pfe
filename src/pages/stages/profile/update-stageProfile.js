@@ -90,7 +90,7 @@ const UpdateStageProfile = () => {
 
   return (
     <Layout>
-      <Button onClick={() => navigate(-1)}>Go Back</Button>
+      <Button onClick={() => navigate(-1)}>Retour</Button>
       {loading || !stage ? (
         <Loader />
       ) : (
@@ -116,7 +116,7 @@ const UpdateStageProfile = () => {
                 color: '#fff',
               }}
             >
-              <Card.Header>Profile Picture</Card.Header>
+              <Card.Header>Image de Profil</Card.Header>
               <Card.Body
                 className=' text-center '
                 style={{
@@ -139,7 +139,7 @@ const UpdateStageProfile = () => {
                   JPG or PNG no larger than 5 MB
                 </div>
 
-                <Button>Update Image</Button>
+                <Button>Mettre à jour l'image</Button>
               </Card.Body>
             </Card>
           </Col>
@@ -159,7 +159,7 @@ const UpdateStageProfile = () => {
               }}
             >
               <Card.Header>
-                <h2 className='text-white'>Account Details</h2>
+                <h2 className='text-white'>Détails du Compte</h2>
               </Card.Header>
               <div className='card-body'>
                 <Form onSubmit={onSubmit}>
@@ -168,7 +168,7 @@ const UpdateStageProfile = () => {
                     <Col md={6}>
                       <Form.Group className='mb-3'>
                         <label className='small mb-1' htmlFor='firstName'>
-                          First name
+                          Prénom
                         </label>
                         <Form.Control
                           id='firstName'
@@ -184,7 +184,7 @@ const UpdateStageProfile = () => {
                     <Col md={6}>
                       <Form.Group className='mb-3'>
                         <label className='small mb-1' htmlFor='lastName'>
-                          Last name
+                          Nom
                         </label>
                         <Form.Control
                           id='lastName'
@@ -202,7 +202,7 @@ const UpdateStageProfile = () => {
                     <Col md={6}>
                       <Form.Group className='mb-3'>
                         <label className='small mb-1' htmlFor='email'>
-                          Email address
+                          Adresse Mail
                         </label>
                         <Form.Control
                           className='form-control'
@@ -218,7 +218,7 @@ const UpdateStageProfile = () => {
                     <Col md={6}>
                       <Form.Group className='mb-3'>
                         <label className='small mb-1' htmlFor='phone'>
-                          Phone
+                         Téléphone
                         </label>
                         <Form.Control
                           id='phone'
@@ -297,7 +297,7 @@ const UpdateStageProfile = () => {
                     </Col>
                   </Row>
                   {/* Save changes button*/}
-                  <Button type='submit'>Save changes</Button>
+                  <Button type='submit'>Sauvegarder</Button>
                 </Form>
               </div>
             </Card>

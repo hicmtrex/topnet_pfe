@@ -58,7 +58,7 @@ const UpdateUserProfile = () => {
 
   return (
     <Layout>
-      <Button onClick={() => navigate(-1)}>Go Back</Button>
+      <Button onClick={() => navigate(-1)}>Retour</Button>
       {loading ? (
         <Loader />
       ) : (
@@ -84,7 +84,7 @@ const UpdateUserProfile = () => {
                 color: '#fff',
               }}
             >
-              <Card.Header>Profile Picture</Card.Header>
+              <Card.Header>Image de profil</Card.Header>
               <Card.Body
                 className=' text-center '
                 style={{
@@ -103,7 +103,7 @@ const UpdateUserProfile = () => {
                   JPG or PNG no larger than 5 MB
                 </div>
 
-                <Button>Update Image</Button>
+                <Button>Mettre à jour l'image</Button>
               </Card.Body>
             </Card>
           </Col>
@@ -123,7 +123,7 @@ const UpdateUserProfile = () => {
               }}
             >
               <Card.Header>
-                <h2 className='text-white'>Account Details</h2>
+                <h2 className='text-white'>Détails du compte</h2>
               </Card.Header>
               <div className='card-body'>
                 <Form onSubmit={onSubmit}>
@@ -132,7 +132,7 @@ const UpdateUserProfile = () => {
                     <Col md={6}>
                       <Form.Group className='mb-3'>
                         <label className='small mb-1' htmlFor='firstName'>
-                          First name
+                          Prénom
                         </label>
                         <Form.Control
                           id='firstName'
@@ -147,7 +147,7 @@ const UpdateUserProfile = () => {
                     <Col md={6}>
                       <Form.Group className='mb-3'>
                         <label className='small mb-1' htmlFor='lastName'>
-                          Last name
+                          Nom
                         </label>
                         <Form.Control
                           id='lastName'
@@ -164,7 +164,7 @@ const UpdateUserProfile = () => {
                     <Col md={6}>
                       <Form.Group className='mb-3'>
                         <label className='small mb-1' htmlFor='email'>
-                          Email address
+                          Adresse Mail
                         </label>
                         <Form.Control
                           className='form-control'
@@ -238,7 +238,7 @@ const UpdateUserProfile = () => {
                     )}
                   </Row>
                   {/* Save changes button*/}
-                  <Button type='submit'>Save changes</Button>
+                  <Button type='submit'>Sauvegarder</Button>
                 </Form>
               </div>
             </Card>

@@ -57,7 +57,7 @@ const QuestionItem = ({ question, num }) => {
 
             {question.answers.map((answer, index) => (
               <ListGroup.Item key={answer.a}>
-                Answer <span className='me-5'>{index + 1}:</span>
+                Réponse <span className='me-5'>{index + 1}:</span>
                 <strong
                   className={answer.right ? 'text-success' : 'text-danger'}
                 >

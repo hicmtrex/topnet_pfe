@@ -1,17 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Card, Col, Form, Row } from 'react-bootstrap';
 import FormContainer from '../../../components/UI/form-container';
-import { MdAlternateEmail } from 'react-icons/md';
-import { RiLockPasswordFill } from 'react-icons/ri';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Layout from '../../../components/layout/layout';
 import { userLogin } from '../../../store/users/user-loginSlice';
 import Title from '../../../components/UI/typography/title';
-import toast from 'react-hot-toast';
 
 const UserLogin = () => {
-  const { userInfo, loading } = useSelector((state) => state.userLogin);
+  const { userInfo } = useSelector((state) => state.userLogin);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
@@ -30,23 +27,24 @@ const UserLogin = () => {
 
   return (
     <Layout>
-      <FormContainer title={'Login your account'}>
+      <FormContainer>
         <Card className=' border-0 '>
           <Card.Body>
             <Row>
               <Col lg={6}>
                 <div className='p-5'>
                   <div className='mb-5'>
-                    <Title title='Login' message='your admin account' />
+                    <Title title="S'identifier" message='votre compte' />{' '}
                   </div>
 
-                  <p className='text-muted mt-2 mb-5'>
-                    If You Really Want To Know, Look In The Register.
-                  </p>
+                  <p className='text-muted mt-2 mb-5'>Admin Dashboard</p>
                   <Form onSubmit={loginHandler}>
-                    <Form.Group controlId='email'>
+                    <Form.Group className='email' controlId='email'>
                       <Form.Label>Email</Form.Label>
-                      <div className='d-flex'>
+                      <div className='input-group mb-3'>
+                        <span className='input-group-text' id='basic-addon1'>
+                          @Topnet/
+                        </span>
                         <Form.Control
                           type='email'
                           placeholder='Enter email'
@@ -54,34 +52,31 @@ const UserLogin = () => {
                           value={email}
                           required
                         />
-                        <MdAlternateEmail size={'2.5rem'} />
                       </div>
                     </Form.Group>
                     <Form.Group controlId='password'>
                       <Form.Label>Password</Form.Label>
-                      <div className='d-flex '>
-                        <Form.Control
-                          type='password'
-                          placeholder='*******'
-                          onChange={(e) => setPassword(e.target.value)}
-                          value={password}
-                          required
-                        />
-                        <RiLockPasswordFill size={'2.5rem'} />
-                      </div>
+                      <Form.Control
+                        type='password'
+                        placeholder='*******'
+                        onChange={(e) => setPassword(e.target.value)}
+                        value={password}
+                        required
+                      />
+
                       <Link
                         to='/admin/auth-confirm-email'
                         className='float-end mt-1'
                       >
-                        forgot password?
+                        Mot de Passe Oublié ?
                       </Link>
                     </Form.Group>
                     <Button
                       type='submit'
                       variant='warning'
-                      className='col-11 mt-3 '
+                      className='w-full mt-3 '
                     >
-                      Login
+                      Identifier
                     </Button>
                   </Form>
                 </div>

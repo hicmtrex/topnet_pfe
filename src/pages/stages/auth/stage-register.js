@@ -16,6 +16,7 @@ const StageRegister = () => {
   const { userInfo } = useSelector((state) => state.stageLogin);
   const { success, error } = useSelector((state) => state.stageRegister);
   const [image, setImage] = useState();
+  const [selectedCin, setSelectedCin] = useState('Cin');
   const [validated, setValidated] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -23,10 +24,9 @@ const StageRegister = () => {
     firstName: '',
     lastName: '',
     email: '',
-    phone: '',
     cin: '',
-    niveau: 'bac',
-    domaine: 'Developpeur web',
+    niveau: 'licence',
+    passport: '',
     password: '',
     password2: '',
   });
@@ -38,8 +38,7 @@ const StageRegister = () => {
     password,
     password2,
     cin,
-    phone,
-    domaine,
+    passport,
     niveau,
   } = formData;
 
@@ -65,22 +64,11 @@ const StageRegister = () => {
     data.append('email', email);
     data.append('password', password);
     data.append('password_confirmation', password2);
-    data.append('cin', cin);
-    data.append('phone', phone);
-    data.append('domaine', domaine);
     data.append('niveau', niveau);
+    selectedCin === 'Cin'
+      ? data.append('cin', cin)
+      : data.append('passport', passport);
 
-    const newUser = {
-      first_name: firstName,
-      last_name: lastName,
-      email,
-      password,
-      password_confirmation: password2,
-      cin,
-      phone,
-      domaine,
-      niveau,
-    };
     dispatch(stagerRegister(data));
   };
 
@@ -102,7 +90,7 @@ const StageRegister = () => {
               <Col lg={6}>
                 <div className='p-2'>
                   <div className='mb-5 d-flex align-items-center'>
-                    <Title title='Register' message='for free' />
+                    <Title title='Inscrire' message='gratuite' />
                     <FaUserPlus size='2.5rem' className='ms-5' />
                   </div>
                   {error && (
@@ -122,7 +110,7 @@ const StageRegister = () => {
                     <Row>
                       <Col md={6}>
                         <Form.Group controlId='firstName'>
-                          <Form.Label>First Name</Form.Label>
+                          <Form.Label>Prénom</Form.Label>
 
                           <Form.Control
                             type='text'
@@ -133,13 +121,13 @@ const StageRegister = () => {
                             required
                           />
                           <Form.Control.Feedback>
-                            Looks good!
+                            Cela semble bon!
                           </Form.Control.Feedback>
                         </Form.Group>
                       </Col>
                       <Col md={6}>
                         <Form.Group controlId='lastName'>
-                          <Form.Label>Last Name</Form.Label>
+                          <Form.Label>Nom</Form.Label>
 
                           <Form.Control
                             type='text'
@@ -150,11 +138,48 @@ const StageRegister = () => {
                             required
                           />
                           <Form.Control.Feedback>
-                            Looks good!
+                            Cela semble bon!
                           </Form.Control.Feedback>
                         </Form.Group>
                       </Col>
-                      <Col md={6}>
+                      <Col md={4}>
+                        <Form.Group controlId='firstName'>
+                          <Form.Label>Cin/Passport</Form.Label>
+
+                          <Form.Select
+                            onClick={(e) => setSelectedCin(e.target.value)}
+                          >
+                            <option value='Cin'>Cin</option>
+                            <option value='Passport'>Passport</option>
+                          </Form.Select>
+                          <Form.Control.Feedback>
+                            Cela semble bon!
+                          </Form.Control.Feedback>
+                        </Form.Group>
+                      </Col>
+                      <Col md={8}>
+                        <Form.Group controlId='lastName'>
+                          <Form.Label>{selectedCin}</Form.Label>
+
+                          <Form.Control
+                            type='text'
+                            name={selectedCin === 'Cin' ? 'cin' : 'passport'}
+                            className='py-3'
+                            placeholder={
+                              selectedCin === 'Cin'
+                                ? 'Enter Cin Number'
+                                : 'Eneter Passport Number'
+                            }
+                            onChange={onChange}
+                            value={selectedCin === 'Cin' ? cin : passport}
+                            required
+                          />
+                          <Form.Control.Feedback>
+                            Cela semble bon!
+                          </Form.Control.Feedback>
+                        </Form.Group>
+                      </Col>
+                      <Col md={12}>
                         <Form.Group controlId='email'>
                           <Form.Label>Email</Form.Label>
 
@@ -167,63 +192,80 @@ const StageRegister = () => {
                             required
                           />
                           <Form.Control.Feedback type='invalid'>
-                            Please choose a valid email.
+                            Veuillez choisir une adresse e-mail valide.
+                          </Form.Control.Feedback>
+                        </Form.Group>
+                      </Col>
+
+                      <Form.Group controlId='password'>
+                        <Form.Label>Mot de Passe</Form.Label>
+
+                        <Form.Control
+                          type='password'
+                          name='password'
+                          placeholder='********'
+                          onChange={onChange}
+                          value={password}
+                          required
+                        />
+                        <Form.Control.Feedback type='invalid'>
+                          Veuillez choisir une adresse e-mail valide.
+                        </Form.Control.Feedback>
+                      </Form.Group>
+
+                      <Form.Group controlId='password2'>
+                        <Form.Label>Confirmer Mote de Passe</Form.Label>
+
+                        <Form.Control
+                          type='password'
+                          name='password2'
+                          placeholder='********'
+                          onChange={onChange}
+                          value={password2}
+                          required
+                        />
+                        <Form.Control.Feedback type='invalid'>
+                          Veuillez choisir un mot de passe valide
+                        </Form.Control.Feedback>
+                      </Form.Group>
+                      <Col md={6}>
+                        <Form.Group controlId='image'>
+                          <Form.Label>Image (Optinal)</Form.Label>
+                          <Form.Control
+                            type='file'
+                            onChange={(e) => setImage(e.target.files[0])}
+                            name='image'
+                            required
+                          />
+                          <Form.Control.Feedback>
+                            Cela semble bon!
                           </Form.Control.Feedback>
                         </Form.Group>
                       </Col>
                       <Col md={6}>
                         <Form.Group controlId='cin'>
-                          <Form.Label>Cin or Passport</Form.Label>
-                          <Form.Control
-                            type='number'
-                            name='cin'
-                            placeholder='Enter Cin'
-                            onChange={onChange}
-                            value={cin}
-                            required
-                          />
-                          <Form.Control.Feedback>
-                            Looks good!
-                          </Form.Control.Feedback>
-                        </Form.Group>
-                      </Col>
-                      <Col md={6}>
-                        <Form.Group controlId='password'>
-                          <Form.Label>Password</Form.Label>
+                          <Form.Label>Niveau</Form.Label>
 
-                          <Form.Control
-                            type='password'
-                            name='password'
-                            placeholder='********'
+                          <Form.Select
                             onChange={onChange}
-                            value={password}
+                            value={niveau}
+                            name='niveau'
                             required
-                          />
-                          <Form.Control.Feedback type='invalid'>
-                            Please choose a valid password
-                          </Form.Control.Feedback>
+                          >
+                            <option value='bts'>Bts</option>
+                            <option value='licence'>Licence</option>
+                            <option value='ingénierie'>Ingénierie</option>
+                            <option value='master'>Master</option>
+                            <Form.Control.Feedback>
+                              Cela semble bon!
+                            </Form.Control.Feedback>
+                          </Form.Select>
                         </Form.Group>
                       </Col>
-                      <Col md={6}>
-                        <Form.Group controlId='password2'>
-                          <Form.Label>Password Confirmation</Form.Label>
-
-                          <Form.Control
-                            type='password'
-                            name='password2'
-                            placeholder='********'
-                            onChange={onChange}
-                            value={password2}
-                            required
-                          />
-                          <Form.Control.Feedback type='invalid'>
-                            Please choose a valid password
-                          </Form.Control.Feedback>
-                        </Form.Group>
-                      </Col>
+                      {/* 
                       <Col md={6}>
                         <Form.Group controlId='phone'>
-                          <Form.Label>Phone</Form.Label>
+                          <Form.Label>Téléphone</Form.Label>
                           <Form.Control
                             type='number'
                             name='phone'
@@ -232,9 +274,7 @@ const StageRegister = () => {
                             value={phone}
                             required
                           />
-                          <Form.Control.Feedback>
-                            Looks good!
-                          </Form.Control.Feedback>
+                          <Form.Control.Feedback></Form.Control.Feedback>
                         </Form.Group>
                       </Col>
                       <Col md={6}>
@@ -277,28 +317,7 @@ const StageRegister = () => {
                           </Form.Select>
                         </Form.Group>
                       </Col>
-                      <Col md={6}>
-                        <Form.Group controlId='cin'>
-                          <Form.Label>Niveau</Form.Label>
-
-                          <Form.Select
-                            onChange={onChange}
-                            value={niveau}
-                            name='niveau'
-                            required
-                          >
-                            <option value='btp'>Btp</option>
-                            <option value='bac'>Bac</option>
-                            <option value='bts'>Bts</option>
-                            <option value='licence'>Licence</option>
-                            <option value='ingénierie'>Ingénierie</option>
-                            <option value='master'>Master</option>
-                            <Form.Control.Feedback>
-                              Looks good!
-                            </Form.Control.Feedback>
-                          </Form.Select>
-                        </Form.Group>
-                      </Col>
+                
                       <Col md={6}>
                         <Form.Group controlId='firstName'>
                           <Form.Label>Image (Optinal)</Form.Label>
@@ -309,16 +328,16 @@ const StageRegister = () => {
                             required
                           />
                           <Form.Control.Feedback>
-                            Looks good!
+                            Cela semble bon!
                           </Form.Control.Feedback>
                         </Form.Group>
-                      </Col>
+                      </Col> */}
                       <Button
                         variant='warning'
                         type='submit'
                         className='col-12 mt-3'
                       >
-                        Register
+                        S'inscrire
                       </Button>
                     </Row>
                   </Form>
@@ -334,9 +353,9 @@ const StageRegister = () => {
         </Card>
 
         <p className='text-muted text-center mt-3 mb-0'>
-          Already have an account?{' '}
+          Vous avez déja un Compte ?{' '}
           <Link to='/stages/auth-login' className='text-warning ml-1'>
-            Login
+            Se Connecter
           </Link>
         </p>
       </Row>

@@ -165,7 +165,7 @@ const StagerDetail = () => {
                 <div className='card-body'>
                   <div className='row'>
                     <div className='col-sm-3'>
-                      <h6 className='mb-0'>Full Name</h6>
+                      <h6 className='mb-0'>Nom Complet</h6>
                     </div>
                     <Col sm={9}>
                       {stage?.first_name} {stage?.last_name}
@@ -181,7 +181,7 @@ const StagerDetail = () => {
                   <hr />
                   <Row className='row'>
                     <Col sm={3} className='col-sm-3'>
-                      <h6 className='mb-0'>Phone</h6>
+                      <h6 className='mb-0'>Téléphone</h6>
                     </Col>
                     <Col sm={9}>{stage?.phone}</Col>
                   </Row>
@@ -209,7 +209,7 @@ const StagerDetail = () => {
                   <hr />
                   <Row className='row'>
                     <Col sm={3} className='col-sm-3'>
-                      <h6 className='mb-0'>Role</h6>
+                      <h6 className='mb-0'>Rôle</h6>
                     </Col>
                     <Col sm={9}>{stage?.phone}</Col>
                   </Row>
@@ -224,7 +224,7 @@ const StagerDetail = () => {
                         <i className='material-icons text-info mr-2'>
                           assignment
                         </i>
-                        Project Status
+                        Status de Projet
                       </h6>
                       <small>Web Design</small>
                       <div className='progress mb-3' style={{ height: '5px' }}>

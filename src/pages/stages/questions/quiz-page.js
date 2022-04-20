@@ -3,11 +3,17 @@ import { Button, Form, Row, Col, Container } from 'react-bootstrap';
 import Layout from '../../../components/layout/layout';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { getStageQuestion } from '../../../store/questions/quiz/stage-quiz';
+import {
+  getStageQuestion,
+  setQuestions,
+} from '../../../store/questions/quiz/stage-quiz';
 import Loader from '../../../components/UI/loader';
 import Message from '../../../components/UI/Message';
 import toast from 'react-hot-toast';
-import { saveStageResult } from '../../../store/questions/quiz/stage-answers';
+import {
+  resetSelectedStage,
+  saveStageResult,
+} from '../../../store/questions/quiz/stage-answers';
 
 const QuizPage = () => {
   const { userInfo } = useSelector((state) => state.stageLogin);
@@ -22,10 +28,12 @@ const QuizPage = () => {
   const [value, setValue] = useState('');
   const [num, setNum] = useState(0);
   const [score, setScore] = useState(0);
+  const [result, setResult] = useState(0);
   const [time, setTime] = useState(60);
 
   useEffect(() => {
     if (!userInfo && !admin) return navigate('/stages/auth-login');
+    if (!selectedStage) return navigate('/');
     dispatch(getStageQuestion());
   }, [dispatch, userInfo, admin]);
 
@@ -42,33 +50,51 @@ const QuizPage = () => {
     };
   }, [time]);
 
+  const resultHander = (q) => {
+    if (q.difficulty === 'easy') {
+      return 1;
+    } else if (q.difficulty === 'medium') {
+      return 3;
+    } else if (q.difficulty === 'hard') {
+      return 4;
+    }
+  };
+
   const subitHandler = (e) => {
     e.preventDefault();
+    dispatch(setQuestions(userAnswer));
+
     if (num + 1 === 10) {
-      if (score >= 6) {
+      if (result >= 10) {
         dispatch(
           saveStageResult({
             categories: selectedStage,
             difficulty: questions[0]?.difficulty,
             score,
-            result: true,
+            result,
+            passed: true,
           })
         );
         toast.success(
-          `Your score is ${score} ,🎉congratulations you passed the test with success 🎉`
+          `Your score is ${result}/20 ,🎉congratulations you passed the test with success 🎉`
         );
-        navigate('/stages/profile');
+        dispatch(resetSelectedStage());
+        navigate('/questions/quiz-success');
       } else {
         dispatch(
           saveStageResult({
             categories: selectedStage,
             difficulty: questions[0]?.difficulty,
             score,
-            result: false,
+            result,
+            passed: false,
           })
         );
-        toast.error(`Your score is ${score} ,sorry you didn't pass the test`);
-        navigate('/');
+        toast.error(
+          `Your score is ${result}/20 ,sorry you didn't pass the test`
+        );
+        dispatch(resetSelectedStage());
+        navigate('/questions/quiz-fail');
       }
 
       return;
@@ -77,10 +103,16 @@ const QuizPage = () => {
 
     const exist = questions[num].answers.find((q) => q.a === value);
     setScore((prevState) => (exist.right ? prevState + 1 : prevState));
+
+    setResult((prev) =>
+      exist.right ? prev + resultHander(questions[num]) : prev
+    );
+
     setUserAnswer([
       ...userAnswer,
       {
         answer: value,
+        difficulty: questions[num].difficulty,
         rightAnswer: exist.right ? true : false,
       },
     ]);
@@ -108,7 +140,7 @@ const QuizPage = () => {
                 <h5 className='mb-2'>Question {num + 1}</h5>
               ) : (
                 <h5>
-                  your score is {score}{' '}
+                  Votre score est {score}{' '}
                   <span
                     className={`${score >= 6 ? 'text-success' : 'text-danger'}`}
                   >
@@ -148,9 +180,18 @@ const QuizPage = () => {
                     />
                   </Form.Group>
                 ))}
-                <Button type='submit' className='col-12 mt-3'>
-                  Next
-                </Button>
+                <Form.Group className='d-flex'>
+                  <Button
+                    onClick={() => setNum((prev) => prev - 1)}
+                    className='w-1/2 mt-3 me-2'
+                    disabled={num === 0}
+                  >
+                    Prev
+                  </Button>
+                  <Button type='submit' className='w-1/2  mt-3'>
+                    Suivant
+                  </Button>
+                </Form.Group>
               </Form>
             </Col>
           </Row>

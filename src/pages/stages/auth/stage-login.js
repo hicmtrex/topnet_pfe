@@ -39,15 +39,15 @@ const StageLogin = () => {
 
   return (
     <Layout>
-      <FormContainer title={'Login your account'}>
+      <FormContainer>
         <Card className=' border-0 '>
           <Card.Body>
             <Row>
               <Col lg={6}>
                 <div className='p-5'>
                   <div className='mb-5 d-flex align-items-center'>
-                    <Title title='Login' message='your account' />{' '}
-                    <GoSignIn size='2.5rem' className='ms-5' />
+                    <Title title="S'identifier" message='votre compte' />{' '}
+                    {/* <GoSignIn size='2.5rem' className='ms-5' /> */}
                   </div>
                   {error && (
                     <Message
@@ -72,7 +72,7 @@ const StageLogin = () => {
                       </div>
                     </Form.Group>
                     <Form.Group controlId='password'>
-                      <Form.Label>Password</Form.Label>
+                      <Form.Label>Mot de Passe </Form.Label>
                       <div className='d-flex '>
                         <Form.Control
                           type='password'
@@ -87,7 +87,7 @@ const StageLogin = () => {
                         to='/stages/auth-email-confirm'
                         className='float-end mt-1'
                       >
-                        forgot password?
+                        Mot de Passe Oublié ?
                       </Link>
                     </Form.Group>
                     <Button
@@ -95,7 +95,7 @@ const StageLogin = () => {
                       type='submit'
                       className='col-11 mt-3'
                     >
-                      Login
+                      Se Connecter
                     </Button>
                   </Form>
                 </div>
@@ -110,9 +110,9 @@ const StageLogin = () => {
         </Card>
 
         <p className='text-muted text-center mt-3 mb-0'>
-          Don't have an account?{' '}
+          vous n'avez pas de compte ?{' '}
           <Link to='/stages/auth-register' className='text-warning ml-1'>
-            Register
+            S'inscrire
           </Link>
         </p>
       </FormContainer>

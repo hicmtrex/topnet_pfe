@@ -32,7 +32,7 @@ const DashBoardPage = () => {
                   13%{' '}
                 </span>{' '}
                 <span className='text-nowrap text-xs text-muted'>
-                  Since last month
+                Depuis le mois dernier
                 </span>{' '}
               </div>
             </Card.Body>
@@ -44,7 +44,7 @@ const DashBoardPage = () => {
               <Row>
                 <Col>
                   <span className='h6 font-semibold text-muted text-sm d-block mb-2'>
-                    New projects
+                    Nouveaux projets
                   </span>{' '}
                   <span className='h3 font-bold mb-0'>215</span>{' '}
                 </Col>
@@ -63,7 +63,7 @@ const DashBoardPage = () => {
                   30%{' '}
                 </span>{' '}
                 <span className='text-nowrap text-xs text-muted'>
-                  Since last month
+                 Depuis le mois dernier
                 </span>
               </div>
             </Card.Body>
@@ -75,7 +75,7 @@ const DashBoardPage = () => {
               <Row>
                 <Col>
                   <span className='h6 font-semibold text-muted text-sm d-block mb-2'>
-                    Total hours
+                   Heures totales
                   </span>
                   <span className='h3 font-bold mb-0'>1.400</span>
                 </Col>
@@ -91,7 +91,7 @@ const DashBoardPage = () => {
                   -5%
                 </span>
                 <span className='text-nowrap text-xs text-muted'>
-                  Since last month
+                  Depuis le mois dernier
                 </span>
               </div>
             </Card.Body>
@@ -103,7 +103,7 @@ const DashBoardPage = () => {
               <Row className='row'>
                 <Col className='col'>
                   <span className='h6 font-semibold text-muted text-sm d-block mb-2'>
-                    Work load
+                  Charge de travail
                   </span>
                   <span className='h3 font-bold mb-0'>95%</span>
                 </Col>
@@ -119,7 +119,7 @@ const DashBoardPage = () => {
                   10%
                 </span>
                 <span className='text-nowrap text-xs text-muted'>
-                  Since last month
+                  Depuis le mois dernier
                 </span>
               </div>
             </Card.Body>
@@ -133,7 +133,7 @@ const DashBoardPage = () => {
 
         <div className='card-footer border-0 py-5'>
           <span className=' text-sm'>
-            Showing 10 items out of 250 results found
+          Affichage de 10 éléments sur 250 résultats trouvés
           </span>
         </div>
       </Card>

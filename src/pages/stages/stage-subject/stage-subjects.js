@@ -1,11 +1,35 @@
 import React from 'react';
+import { useEffect } from 'react';
 import { Button, Card, Col, Row } from 'react-bootstrap';
-import { Link, useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import Layout from '../../../components/layout/layout';
 import Title from '../../../components/UI/typography/title';
+import { getStageTest } from '../../../store/questions/quiz/getstage-answerSlice';
 
 const StageSubject = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { selectedStage } = useSelector((state) => state.stageResult);
+  const { results } = useSelector((state) => state.stageTestResult);
+
+  const checkTest = () => {
+    const exist = results.find((res) => res.categories === selectedStage);
+    if (exist === undefined) {
+    } else if (!exist.passed) {
+      toast.error('Vous avez échoué le test 🙁');
+      return navigate('/');
+    } else if (exist.passed) {
+      toast.success('You Already has been passed this test!');
+      return navigate('/stages/profile');
+    }
+  };
+
+  useEffect(() => {
+    dispatch(getStageTest());
+    checkTest();
+  }, [dispatch]);
 
   const startQuiz = () => {
     if (window.confirm('Do you want start a test psychotechnique now?')) {
@@ -30,15 +54,15 @@ const StageSubject = () => {
             <Card.Body>
               <Card.Title as='h2'>Stage d’observation </Card.Title>
               <Card.Text>
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
+                Quelques exemples de texte rapides à construire sur le titre de
+                la carte et à composer l'essentiel du contenu de la carte.
               </Card.Text>
               <Button
                 onClick={startQuiz}
                 variant='warning'
                 className='mt-2 col-12'
               >
-                Start Now
+                Commencez maintenant
               </Button>
             </Card.Body>
           </Card>
@@ -54,15 +78,15 @@ const StageSubject = () => {
             <Card.Body>
               <Card.Title as='h2'>Stage Pfe</Card.Title>
               <Card.Text>
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
+                Quelques exemples de texte rapides à construire sur le titre de
+                la carte et à composer l'essentiel du contenu de la carte.
               </Card.Text>
               <Button
                 onClick={startQuiz}
                 variant='warning'
                 className='mt-2 col-12'
               >
-                Start Now
+                Commencez maintenant
               </Button>
             </Card.Body>
           </Card>
@@ -78,15 +102,15 @@ const StageSubject = () => {
             <Card.Body>
               <Card.Title as='h2'>Stage de perfectionnement</Card.Title>
               <Card.Text>
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
+                Quelques exemples de texte rapides à construire sur le titre de
+                la carte et à composer l'essentiel du contenu de la carte.
               </Card.Text>
               <Button
                 onClick={startQuiz}
                 variant='warning'
                 className='mt-2 col-12'
               >
-                Start Now
+                Commencez maintenant
               </Button>
             </Card.Body>
           </Card>

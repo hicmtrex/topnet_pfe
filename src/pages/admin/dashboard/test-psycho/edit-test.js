@@ -61,7 +61,7 @@ const EditTest = () => {
       answers,
       difficulty,
     };
-    console.log(newUser);
+
     dispatch(updateQuestion(newUser));
     navigate('/admin/test-psychotechnique');
   };
@@ -150,14 +150,14 @@ const EditTest = () => {
                             value={difficulty}
                             required
                           >
-                            <option value='easy'>Easy</option>
-                            <option value='medium'>Medium</option>
-                            <option value='hard'>Hard</option>
+                            <option value='easy'>Facile</option>
+                            <option value='medium'>Moyenne</option>
+                            <option value='hard'>Difficile</option>
                           </Form.Select>
                         </div>
                       </Form.Group>
                       <Form.Group controlId='title'>
-                        <Form.Label> Title</Form.Label>
+                        <Form.Label> Titre</Form.Label>
                         <div className='d-flex '>
                           <Form.Control
                             as='textarea'
@@ -186,7 +186,7 @@ const EditTest = () => {
                         </div>
                       </Form.Group>
                       <Form.Group controlId='answer1'>
-                        <Form.Label>Answer 1</Form.Label>
+                        <Form.Label>Réponse 1</Form.Label>
                         <div className='d-flex '>
                           <Form.Control
                             type='text'
@@ -199,7 +199,7 @@ const EditTest = () => {
                         </div>
                       </Form.Group>
                       <Form.Group controlId='answer2'>
-                        <Form.Label>Answer 2</Form.Label>
+                        <Form.Label>Réponse 2</Form.Label>
                         <div className='d-flex '>
                           <Form.Control
                             type='text'
@@ -212,7 +212,7 @@ const EditTest = () => {
                         </div>
                       </Form.Group>
                       <Form.Group controlId='answer3'>
-                        <Form.Label>Answer 3</Form.Label>
+                        <Form.Label>Réponse 3</Form.Label>
                         <div className='d-flex '>
                           <Form.Control
                             name='answer3'
@@ -225,7 +225,7 @@ const EditTest = () => {
                         </div>
                       </Form.Group>
                       <Form.Group controlId='answer4'>
-                        <Form.Label>Answer 4</Form.Label>
+                        <Form.Label>Réponse 4</Form.Label>
                         <div className='d-flex '>
                           <Form.Control
                             name='answer4'
@@ -237,7 +237,7 @@ const EditTest = () => {
                         </div>
                       </Form.Group>
                       <Form.Group controlId='rightAnswer'>
-                        <Form.Label>Right Answer</Form.Label>
+                        <Form.Label>Réponse Correcte</Form.Label>
                         <div className='d-flex '>
                           <Form.Select
                             name='rightAnswer'
@@ -246,15 +246,15 @@ const EditTest = () => {
                             style={{ fontSize: '20px' }}
                             className='text-center'
                           >
-                            <option value='answer1'>Answer 1</option>
-                            <option value='answer2'>Answer 2</option>
-                            <option value='answer3'>Answer 3</option>
-                            <option value='answer4'>Answer 4</option>
+                            <option value='answer1'>Réponse 1</option>
+                            <option value='answer2'>Réponse 2</option>
+                            <option value='answer3'>Réponse 3</option>
+                            <option value='answer4'>Réponse 4</option>
                           </Form.Select>
                         </div>
                       </Form.Group>
                       <Button type='submit' className='col-11 mt-3'>
-                        Confirm
+                        Confirmer
                       </Button>
                     </Form>
                   </div>

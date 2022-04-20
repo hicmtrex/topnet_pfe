@@ -30,6 +30,10 @@ import TestLadingPage from './pages/admin/dashboard/test-psycho/test-ladingpage'
 import StageSubject from './pages/stages/stage-subject/stage-subjects';
 import AddTest from './pages/admin/dashboard/test-psycho/add-test';
 import EditTest from './pages/admin/dashboard/test-psycho/edit-test';
+import SubjustList from './pages/admin/dashboard/subjects/subjects-list';
+import AddSubject from './pages/admin/dashboard/subjects/add-subject';
+import QuizFail from './pages/stages/questions/quiz-fail';
+import QuizSuccess from './pages/stages/questions/quiz-success';
 
 const App = () => {
   return (
@@ -59,8 +63,17 @@ const App = () => {
           }
         />
 
-        <Route path='/stages/subjects' element={<StageSubject />} />
+        <Route
+          path='/stages/subjects'
+          element={
+            <ProtectedRoute>
+              <StageSubject />
+            </ProtectedRoute>
+          }
+        />
         <Route path='/questions/quiz' element={<QuizPage />} />
+        <Route path='/questions/quiz-fail' element={<QuizFail />} />
+        <Route path='/questions/quiz-success' element={<QuizSuccess />} />
         <Route
           path='/users/update-userprofile/:id'
           element={<UpdateUserProfile />}
@@ -99,6 +112,9 @@ const App = () => {
         />
         <Route path='/admin/add-test' element={<AddTest />} />
         <Route path='/admin/edit-test/:id' element={<EditTest />} />
+
+        <Route path='/admin/sujet-stage' element={<SubjustList />} />
+        <Route path='/admin/add-sujet' element={<AddSubject />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
 

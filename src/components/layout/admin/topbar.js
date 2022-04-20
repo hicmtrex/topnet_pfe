@@ -25,7 +25,7 @@ const Topbar = () => {
                   onClick={() => navigate('/admin/add-user')}
                   className='m-3'
                 >
-                  Add User
+                  Ajouter utilisateur
                   <FaUserPlus className='mx-2' size='1.5rem' />
                 </Button>
               </div>

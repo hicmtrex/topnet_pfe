@@ -33,13 +33,13 @@ const UserProfile = ({ userInfo }) => {
               </div>
               <ListGroup variant='flush'>
                 <ListGroup.Item as='h6'>
-                  Memeber Since:
+                  Memebre Depuis:
                   <span className='float-end'>
                     {userInfo?.user.created_at.substring(0, 10)}
                   </span>
                 </ListGroup.Item>
                 <ListGroup.Item as='h6'>
-                  Least Update:
+                Dernière Mise à Jour:
                   <span className='float-end'>
                     {userInfo?.user.updated_at.substring(0, 10)}
                   </span>
@@ -49,7 +49,7 @@ const UserProfile = ({ userInfo }) => {
                     className='btn btn-dark col-12'
                     to={`/users/update-userprofile/${userInfo?.user._id}`}
                   >
-                    Edit Profile
+                    Editer le Profile
                   </Link>
                 </ListGroup.Item>
               </ListGroup>
@@ -61,7 +61,7 @@ const UserProfile = ({ userInfo }) => {
             <div className='card-body'>
               <div className='row'>
                 <div className='col-sm-3'>
-                  <h6 className='mb-0'>Full Name</h6>
+                  <h6 className='mb-0'>Nom Complet</h6>
                 </div>
                 <Col sm={9}>
                   {userInfo?.user.first_name} {userInfo?.user.last_name}
@@ -77,7 +77,7 @@ const UserProfile = ({ userInfo }) => {
               <hr />
               <Row>
                 <Col sm={3} className='col-sm-3'>
-                  <h6 className='mb-0'>Role</h6>
+                  <h6 className='mb-0'>Rôle</h6>
                 </Col>
                 <Col sm={9}>{roleCheck(userInfo?.user)}</Col>
               </Row>
@@ -109,9 +109,9 @@ const UserProfile = ({ userInfo }) => {
               <Card.Body>
                 <h6 className='d-flex align-items-center mb-3'>
                   <i className='material-icons text-info mr-2'>assignment</i>
-                  Project Status
+                   Status De Project
                 </h6>
-                <small>Web Design</small>
+                <small>Création de Sites Web</small>
                 <div className='progress mb-3' style={{ height: '5px' }}>
                   <div
                     className='progress-bar bg-primary'
@@ -122,7 +122,7 @@ const UserProfile = ({ userInfo }) => {
                     aria-valuemax={100}
                   />
                 </div>
-                <small>Website Markup</small>
+                <small>Balisage du Site Web</small>
                 <div className='progress mb-3' style={{ height: '5px' }}>
                   <div
                     className='progress-bar bg-primary'
@@ -133,7 +133,7 @@ const UserProfile = ({ userInfo }) => {
                     aria-valuemax={100}
                   />
                 </div>
-                <small>One Page</small>
+                <small>Une Page</small>
                 <div className='progress mb-3' style={{ height: '5px' }}>
                   <div
                     className='progress-bar bg-primary'
@@ -144,7 +144,7 @@ const UserProfile = ({ userInfo }) => {
                     aria-valuemax={100}
                   />
                 </div>
-                <small>Mobile Template</small>
+                <small>Template Mobile</small>
                 <div className='progress mb-3' style={{ height: '5px' }}>
                   <div
                     className='progress-bar bg-primary'

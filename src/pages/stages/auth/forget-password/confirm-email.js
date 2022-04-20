@@ -27,12 +27,12 @@ const ConfirmEmail = () => {
               <Col lg={6}>
                 <div className='p-5'>
                   <div className='mb-5'>
-                    <h3 className='h4 font-weight-bold'>Reset your Password</h3>
+                    <h3 className='h4 font-weight-bold'>Réinitialisez votre mot de passe</h3>
                   </div>
 
                   <Form onSubmit={onSubmit}>
                     <Form.Group controlId='email'>
-                      <Form.Label>Your Email</Form.Label>
+                      <Form.Label>votre Email</Form.Label>
                       <div className='d-flex'>
                         <Form.Control
                           type='email'
@@ -46,7 +46,7 @@ const ConfirmEmail = () => {
                     </Form.Group>
 
                     <Button type='submit' className='col-11 mt-3'>
-                      Confirm
+                      Confirmer
                     </Button>
                   </Form>
                 </div>

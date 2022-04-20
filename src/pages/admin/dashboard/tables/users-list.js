@@ -27,7 +27,7 @@ const UserList = () => {
         <>
           <Card className=' shadow border-0 mb-7 '>
             <Card.Header className='card-header d-flex bg-dark  justify-content-between'>
-              <h5 className='mb-0 text-white'>Stages List</h5>
+              <h5 className='mb-0 text-white'>Liste des Stages</h5>
               <h6>
                 <FaUserCog color='white' size={'1.5rem'} />
               </h6>
@@ -36,15 +36,15 @@ const UserList = () => {
             <Table responsive hover className='table-nowrap'>
               <thead className='thead-light'>
                 <tr>
-                  <th scope='col'>Name</th>
+                  <th scope='col'>Nom</th>
                   <th scope='col'>
                     <span className='mx-4'>Email</span>
                   </th>
                   <th scope='col'>
                     <span className='mx-4'>Cin</span>
                   </th>
-                  <th scope='col'>Role</th>
-                  <th scope='col'>Status</th>
+                  <th scope='col'>Rôle</th>
+                  <th scope='col'>Statut</th>
 
                   <th />
                 </tr>

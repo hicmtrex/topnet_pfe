@@ -32,13 +32,13 @@ const TestLadingPage = () => {
         <>
           <Card className=' shadow border-0 mb-2'>
             <Card.Header className='card-header d-flex bg-dark  justify-content-between'>
-              <h5 className='mb-0 text-white'>Questions List</h5>
+              <h5 className='mb-0 text-white'>Liste des Questions</h5>
               <Button
                 variant='warning'
                 onClick={() => navigate('/admin/add-test')}
                 className='btn-sm '
               >
-                Add Question
+                Ajouter Question
               </Button>
             </Card.Header>
           </Card>

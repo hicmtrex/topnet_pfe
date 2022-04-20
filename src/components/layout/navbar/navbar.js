@@ -38,10 +38,10 @@ const Header = () => {
           <Navbar.Collapse id='responsive-navbar-nav'>
             <Nav className='me-auto'>
               <LinkContainer to='/' className='ms-2'>
-                <Nav.Link>Home</Nav.Link>
+                <Nav.Link>Accueil</Nav.Link>
               </LinkContainer>
 
-              <Nav.Link href='/#features'>Features</Nav.Link>
+              <Nav.Link href='/#features'>Caractéristiques</Nav.Link>
 
               <Nav.Link href='/#contact'>Contact</Nav.Link>
             </Nav>
@@ -57,10 +57,11 @@ const Header = () => {
                   {admin?.user.coordinator ||
                   admin?.user.service_rh ||
                   userInfo?.user.service_rh ||
-                  userInfo?.user.service_rh ? (
+                  userInfo?.user.service_rh ||
+                  admin?.user.encadrant ? (
                     <LinkContainer to='/admin/dashboard'>
                       <NavDropdown.Item className='text-dark'>
-                        Dashboard
+                        Tableau de bord
                       </NavDropdown.Item>
                     </LinkContainer>
                   ) : null}
@@ -70,7 +71,9 @@ const Header = () => {
                     </NavDropdown.Item>
                   </LinkContainer>
 
-                  <NavDropdown.Item onClick={onLogout}>Logout</NavDropdown.Item>
+                  <NavDropdown.Item onClick={onLogout}>
+                    Se déconnecter
+                  </NavDropdown.Item>
                 </NavDropdown>
                 <a href='#' className='text-white mx-2'>
                   <FaUserAlt size={'1.3rem'} />
@@ -79,10 +82,10 @@ const Header = () => {
             ) : (
               <Nav>
                 <LinkContainer to='/stages/auth-login'>
-                  <Nav.Link>Sign in</Nav.Link>
+                  <Nav.Link>s'identifier</Nav.Link>
                 </LinkContainer>
                 <LinkContainer to='/stages/auth-register'>
-                  <Nav.Link>Sign up</Nav.Link>
+                  <Nav.Link>S'inscrire</Nav.Link>
                 </LinkContainer>
               </Nav>
             )}

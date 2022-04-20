@@ -18,7 +18,7 @@ const ProfilePage = () => {
 
   return (
     <Layout>
-      {userInfo?.user.phone ? (
+      {userInfo?.user.niveau ? (
         <StagerProfile userInfo={userInfo} />
       ) : (
         <UserProfile userInfo={adminInfo} />

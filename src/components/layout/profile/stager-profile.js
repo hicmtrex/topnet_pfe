@@ -42,13 +42,13 @@ const StagerProfile = ({ userInfo }) => {
               </div>
               <ListGroup variant='flush'>
                 <ListGroup.Item as='h6'>
-                  Memeber Since:
+                  Memebre depuis:
                   <span className='float-end'>
                     {userInfo.user.created_at.substring(0, 10)}
                   </span>
                 </ListGroup.Item>
                 <ListGroup.Item as='h6'>
-                  Least Update:
+                  Dernière mise à jour:
                   <span className='float-end'>
                     {userInfo.user.updated_at.substring(0, 10)}
                   </span>
@@ -58,7 +58,7 @@ const StagerProfile = ({ userInfo }) => {
                     className='btn btn-dark col-12'
                     to={`/users/update-stageprofile/${userInfo.user._id}`}
                   >
-                    Edit Profile
+                    Editer le profil
                   </Link>
                 </ListGroup.Item>
               </ListGroup>
@@ -70,7 +70,7 @@ const StagerProfile = ({ userInfo }) => {
             <div className='card-body'>
               <div className='row'>
                 <div className='col-sm-3'>
-                  <h6 className='mb-0'>Full Name</h6>
+                  <h6 className='mb-0'>Nom Complet</h6>
                 </div>
                 <Col sm={9}>
                   {userInfo.user.first_name} {userInfo.user.last_name}
@@ -86,38 +86,42 @@ const StagerProfile = ({ userInfo }) => {
               <hr />
               <Row>
                 <Col sm={3} className='col-sm-3'>
-                  <h6 className='mb-0'>Phone</h6>
+                  <h6 className='mb-0'>Téléphone</h6>
                 </Col>
-                <Col sm={9}>{userInfo.user.phone}</Col>
+                <Col sm={9}>{userInfo.user?.phone}</Col>
               </Row>
               <hr />
               <Row>
                 <Col sm={3} className='col-sm-3'>
                   <h6 className='mb-0'>Domaine</h6>
                 </Col>
-                <Col sm={9}>{userInfo.user.domaine}</Col>
+                <Col sm={9}>{userInfo.user?.domaine}</Col>
               </Row>
               <hr />
-              <Row>
-                <Col sm={3} className='col-sm-3'>
-                  <h6 className='mb-0'>Cin</h6>
-                </Col>
-                <Col sm={9}>{userInfo.user.cin}</Col>
-              </Row>
+              {userInfo.user.cin ? (
+                <Row>
+                  <Col sm={3} className='col-sm-3'>
+                    <h6 className='mb-0'>Cin</h6>
+                  </Col>
+                  <Col sm={9}>{userInfo.user?.cin}</Col>
+                </Row>
+              ) : (
+                <Row>
+                  <Col sm={3} className='col-sm-3'>
+                    <h6 className='mb-0'>Passport</h6>
+                  </Col>
+                  <Col sm={9}>{userInfo.user?.passport}</Col>
+                </Row>
+              )}
+
               <hr />
               <Row>
                 <Col sm={3} className='col-sm-3'>
                   <h6 className='mb-0'>Niveau</h6>
                 </Col>
-                <Col sm={9}>{userInfo.user.niveau}</Col>
+                <Col sm={9}>{userInfo.user?.niveau}</Col>
               </Row>
               <hr />
-              <Row>
-                <Col sm={3} className='col-sm-3'>
-                  <h6 className='mb-0'>Passport</h6>
-                </Col>
-                <Col sm={9}>{userInfo.user.passport}</Col>
-              </Row>
             </div>
           </div>
         </Col>
@@ -133,15 +137,16 @@ const StagerProfile = ({ userInfo }) => {
                   </h6>
                   {results.map((result) => (
                     <div key={result._id}>
-                      <small>{result.categories}</small>
+                      <span>{result.categories}</span>
                       <small
                         className={`float-md-end ${
-                          result.result ? 'text-success' : 'text-danger'
+                          result.passed ? 'text-success' : 'text-danger'
                         }`}
                       >
-                        {result.score}/10{' '}
-                        {result.result ? 'Aproved' : 'Rejected'}
+                        {result.result}/20{' '}
+                        {result.passed ? 'Aproved' : 'Rejected'}
                       </small>
+                      <br /> <small>{result.score}</small>
                       <div className='progress mb-3' style={{ height: '5px' }}>
                         <div
                           className='progress-bar bg-primary'

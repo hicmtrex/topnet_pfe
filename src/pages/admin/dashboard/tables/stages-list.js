@@ -26,7 +26,7 @@ const StageList = () => {
         <>
           <Card className=' shadow border-0 mb-2 '>
             <Card.Header className='card-header d-flex bg-dark  justify-content-between'>
-              <h5 className='mb-0 text-white'>Stages List</h5>
+              <h5 className='mb-0 text-white'>Liste des Stages </h5>
               <h6>
                 <FaUserCog color='white' size={'1.5rem'} />
               </h6>
@@ -35,7 +35,7 @@ const StageList = () => {
             <Table responsive hover className='table-nowrap'>
               <thead className='thead-light'>
                 <tr>
-                  <th scope='col'>Name</th>
+                  <th scope='col'>Nom</th>
                   <th scope='col'>
                     <span className='mx-4'>Email</span>
                   </th>
@@ -43,8 +43,8 @@ const StageList = () => {
                     <span className='mx-4'>Cin</span>
                   </th>
                   <th scope='col'>Domaine</th>
-                  <th scope='col'>Phone</th>
-                  <th scope='col'>Status</th>
+                  <th scope='col'>Téléphone</th>
+                  <th scope='col'>Statut</th>
 
                   <th />
                 </tr>
@@ -64,3 +64,8 @@ const StageList = () => {
 };
 
 export default StageList;
+
+// const { userInfo } = useSelector((state) => state.userLogin);
+// const [page, setPage] = useState(1);
+
+// const stagess = stages.filter((s) => s.domaine === userInfo.user.domaine);

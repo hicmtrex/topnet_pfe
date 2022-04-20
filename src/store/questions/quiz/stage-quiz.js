@@ -7,6 +7,7 @@ const initialState = {
   loading: false,
   questions: [],
   error: null,
+  currentQuestions: [],
 };
 
 export const getStageQuestion = createAsyncThunk(
@@ -15,8 +16,8 @@ export const getStageQuestion = createAsyncThunk(
     try {
       const res = await clientAxios.get('/questions/quiz');
       if (res.data) {
-        const result = Object.values(res.data);
-        return result;
+        const merged = [].concat.apply([], res.data);
+        return merged;
       }
     } catch (error) {
       const message = setError(error);
@@ -29,7 +30,11 @@ export const getStageQuestion = createAsyncThunk(
 const stageQuestionSlice = createSlice({
   name: 'stage-questions',
   initialState,
-  reducers: {},
+  reducers: {
+    setQuestions(state, action) {
+      state.currentQuestions = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getStageQuestion.pending, (state) => {
@@ -46,5 +51,7 @@ const stageQuestionSlice = createSlice({
       });
   },
 });
+
+export const { setQuestions } = stageQuestionSlice.actions;
 
 export default stageQuestionSlice;

@@ -10,13 +10,13 @@ const Banner = () => {
       </video>
       <div className='video-overlay header-text'>
         <div className='caption'>
-          <h6>Graduate School of Management</h6>
+          <h6>École supérieure de gestion</h6>
           <h2>
-            <em>Your</em> Best Choice
+            <em>Votre</em> Meilleur choix
           </h2>
           <div className='main-button'>
             <div className='scroll-to-section'>
-              <Link to='/home'>Discover more</Link>
+              <Link to='/home'>Savoir plus</Link>
             </div>
           </div>
         </div>
