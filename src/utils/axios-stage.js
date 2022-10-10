@@ -1,7 +1,13 @@
 import axios from 'axios';
 
+export const baseUrl = process.env.REACT_APP_API_URL;
+
+export const publicAxios = axios.create({
+  baseURL: `${baseUrl}`,
+});
+
 const clientAxios = axios.create({
-  baseURL: '/api',
+  baseURL: `${baseUrl}/api`,
 });
 
 export const clientProvider = (store) => {

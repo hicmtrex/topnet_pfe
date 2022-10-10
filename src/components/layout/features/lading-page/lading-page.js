@@ -96,7 +96,7 @@ const Features = () => {
                 >
                   <div className='content-show'>
                     <h4>
-                      <i className='fa fa-book' />
+                      <FaGraduationCap size={'2.5rem'} className='me-2' />
                       Vraie rencontre
                     </h4>
                   </div>

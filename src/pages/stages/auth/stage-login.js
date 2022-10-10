@@ -13,7 +13,6 @@ import {
 import './stage-auth.css';
 import { LOCAL_STORAGE } from '../../../utils/help-api';
 import toast from 'react-hot-toast';
-import { GoSignIn } from 'react-icons/go';
 import Message from '../../../components/UI/Message';
 import Title from '../../../components/UI/typography/title';
 
@@ -28,6 +27,7 @@ const StageLogin = () => {
     e.preventDefault();
     dispatch(stagerLogin({ email, password }));
   };
+
   useEffect(() => {
     if (userInfo?.user.status === false) {
       localStorage.removeItem(LOCAL_STORAGE.auth);

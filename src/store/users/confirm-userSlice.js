@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import { publicAxios } from '../../utils/axios-stage';
 import { setError } from '../../utils/help-api';
 
 const initialState = {
@@ -13,11 +14,15 @@ export const confirmUser = createAsyncThunk(
   'confirm/email',
   async (email, thunkAPI) => {
     try {
-      const { data } = await axios.post('/api/password/forgot_user', email, {
-        headers: {
-          Accpet: 'application/json',
-        },
-      });
+      const { data } = await publicAxios.post(
+        '/api/password/forgot_user',
+        email,
+        {
+          headers: {
+            Accpet: 'application/json',
+          },
+        }
+      );
 
       return data;
     } catch (error) {

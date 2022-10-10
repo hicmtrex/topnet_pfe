@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import axios from 'axios';
 import toast from 'react-hot-toast';
+import { publicAxios } from '../../utils/axios-stage';
 import adminAxios, { setError } from '../../utils/help-api';
 
 const initialState = {
@@ -14,7 +14,7 @@ export const getQuestionsList = createAsyncThunk(
   'get/questions',
   async (page, thunkAPI) => {
     try {
-      const res = await axios.get(`/api/questions?page=${page}`);
+      const res = await publicAxios.get(`/api/questions?page=${page}`);
       if (res.data) {
         return res.data;
       }

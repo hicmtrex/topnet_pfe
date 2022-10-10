@@ -4,18 +4,18 @@ import adminAxios, { setError } from '../../../utils/help-api';
 
 const initialState = {
   loading: false,
-  stages: [],
+  approvedAnswers: [],
   error: null,
-  total: 10,
 };
 
-export const getStagesList = createAsyncThunk(
-  'get/stages',
-  async (page = 1, thunkAPI) => {
+export const getApprovedAnswers = createAsyncThunk(
+  'approved/result',
+  async (thunkAPI) => {
     try {
-      const res = await adminAxios.get(`/stages?page=${page}`);
+      const res = await adminAxios.get('/answers/approvedresult');
       if (res.data) {
-        return res.data;
+        const result = Object.values(res.data);
+        return result;
       }
     } catch (error) {
       const message = setError(error);
@@ -25,26 +25,24 @@ export const getStagesList = createAsyncThunk(
   }
 );
 
-const stagesListSlice = createSlice({
-  name: 'stages-list',
+const approvedAnswersSlice = createSlice({
+  name: 'approved-result',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(getStagesList.pending, (state) => {
+      .addCase(getApprovedAnswers.pending, (state) => {
         state.loading = true;
-        state.stages = [];
       })
-      .addCase(getStagesList.fulfilled, (state, action) => {
+      .addCase(getApprovedAnswers.fulfilled, (state, action) => {
         state.loading = false;
-        state.stages = action.payload.data;
-        state.total = action.payload.total;
+        state.approvedAnswers = action.payload;
       })
-      .addCase(getStagesList.rejected, (state, action) => {
+      .addCase(getApprovedAnswers.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       });
   },
 });
 
-export default stagesListSlice;
+export default approvedAnswersSlice;

@@ -8,16 +8,17 @@ import Layout from '../components/layout/layout';
 import Loader from '../components/UI/loader';
 import Title from '../components/UI/typography/title';
 import { getSubjectsList } from '../store/subjects/subjects-list';
+import { stages } from '../utils/data';
 
 const HomePage = () => {
   const { userInfo: stageInfo } = useSelector((state) => state.stageLogin);
   const { userInfo } = useSelector((state) => state.userLogin);
   const { subjects, loading } = useSelector((state) => state.subjectList);
 
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getSubjectsList());
-  }, [dispatch]);
+  // const dispatch = useDispatch();
+  // useEffect(() => {
+  //   dispatch(getSubjectsList());
+  // }, [dispatch]);
 
   return (
     <Layout>
@@ -42,7 +43,7 @@ const HomePage = () => {
               className=' row-cols-lg-3 row-cols-md-2 row-cols-1 text-center justify-content-center px-xl-6 aos-init aos-animate'
               data-aos='fade-up'
             >
-              {subjects.map((stage) => (
+              {stages.map((stage) => (
                 <Col
                   md={6}
                   xl={4}

@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React, { useState } from 'react';
 import { Button, Card, Col, Form, Row } from 'react-bootstrap';
 import toast from 'react-hot-toast';
@@ -7,6 +6,7 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Layout from '../../../../components/layout/layout';
 import FormContainer from '../../../../components/UI/form-container';
+import { publicAxios } from '../../../../utils/axios-stage';
 import { setError } from '../../../../utils/help-api';
 
 const ResetPassword = () => {
@@ -18,7 +18,7 @@ const ResetPassword = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(
+      const res = await publicAxios.post(
         '/api/password/reset',
         {
           email: credentials.user.email,
@@ -51,7 +51,9 @@ const ResetPassword = () => {
               <Col lg={6}>
                 <div className='p-5'>
                   <div className='mb-5'>
-                    <h3 className='h4 font-weight-bold'>Réinitialisez votre mot de passe</h3>
+                    <h3 className='h4 font-weight-bold'>
+                      Réinitialisez votre mot de passe
+                    </h3>
                   </div>
 
                   <Form onSubmit={onSubmit}>

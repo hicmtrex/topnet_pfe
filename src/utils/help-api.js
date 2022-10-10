@@ -19,6 +19,7 @@ export const setError = (error) => {
   return message;
 };
 
+
 const adminAxios = axios.create({
   baseURL: '/api',
 });

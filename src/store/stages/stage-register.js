@@ -1,13 +1,14 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import { publicAxios } from '../../utils/axios-stage';
 import { setError } from '../../utils/help-api';
 
 export const stagerRegister = createAsyncThunk(
   'stages/register',
   async (user, thunkAPI) => {
     try {
-      const res = await axios.post('/api/stages/register', user, {
+      const res = await publicAxios.post('/api/stages/register', user, {
         headers: {
           Accpet: 'application/json',
         },

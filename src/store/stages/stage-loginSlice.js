@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import { publicAxios } from '../../utils/axios-stage';
 import { LOCAL_STORAGE, setError } from '../../utils/help-api';
 
 const initialState = {
@@ -15,14 +16,14 @@ export const stagerLogin = createAsyncThunk(
   'stages/login',
   async (user, thunkAPI) => {
     try {
-      const { data } = await axios.post('/api/stages/login', user, {
+      const { data } = await publicAxios.post('/api/stages/login', user, {
         headers: {
           Accpet: 'application/json',
         },
       });
 
       if (data.user.status === true) {
-        toast(`Welcome ${data.user.first_name}`, {
+        toast(`Bienvenue ${data.user.first_name}`, {
           icon: '👏',
         });
         localStorage.setItem(LOCAL_STORAGE.auth, JSON.stringify(data));

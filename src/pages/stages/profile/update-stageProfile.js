@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Button, Card, Col, Form, Image, Row } from 'react-bootstrap';
 import toast from 'react-hot-toast';
@@ -8,6 +7,7 @@ import Layout from '../../../components/layout/layout';
 import Loader from '../../../components/UI/loader';
 import { stageLogout } from '../../../store/stages/stage-loginSlice';
 import { userLogout } from '../../../store/users/user-loginSlice';
+import { publicAxios } from '../../../utils/axios-stage';
 import { setError } from '../../../utils/help-api';
 
 const UpdateStageProfile = () => {
@@ -28,7 +28,7 @@ const UpdateStageProfile = () => {
   const getStageDetail = async (stageId) => {
     try {
       setLoading(true);
-      const { data } = await axios.get(`/api/stages/${stageId}`, {
+      const { data } = await publicAxios.get(`/api/stages/${stageId}`, {
         headers: {
           Accpet: 'application/json',
           Authorization: `Bearer ${userInfo.token}`,
@@ -44,7 +44,7 @@ const UpdateStageProfile = () => {
 
   const updateStage = async (user) => {
     try {
-      const res = await axios.put(`/api/stages/${user.id}`, user, {
+      const res = await publicAxios.put(`/api/stages/${user.id}`, user, {
         headers: {
           Accpet: 'application/json',
           Authorization: `Bearer ${userInfo.token}`,
@@ -218,7 +218,7 @@ const UpdateStageProfile = () => {
                     <Col md={6}>
                       <Form.Group className='mb-3'>
                         <label className='small mb-1' htmlFor='phone'>
-                         Téléphone
+                          Téléphone
                         </label>
                         <Form.Control
                           id='phone'

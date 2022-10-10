@@ -34,6 +34,7 @@ import SubjustList from './pages/admin/dashboard/subjects/subjects-list';
 import AddSubject from './pages/admin/dashboard/subjects/add-subject';
 import QuizFail from './pages/stages/questions/quiz-fail';
 import QuizSuccess from './pages/stages/questions/quiz-success';
+import ApprovedStages from './pages/admin/dashboard/tables/approvedresult-stages';
 
 const App = () => {
   return (
@@ -115,6 +116,7 @@ const App = () => {
 
         <Route path='/admin/sujet-stage' element={<SubjustList />} />
         <Route path='/admin/add-sujet' element={<AddSubject />} />
+        <Route path='/admin/approved-stages' element={<ApprovedStages />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
 

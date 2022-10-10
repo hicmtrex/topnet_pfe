@@ -12,7 +12,7 @@ const QuizFail = () => {
     <Layout>
       <Row>
         <h2 className='text-center text-warning'>
-          sorry you didn't pass the test
+          désolé tu n'as pas réussi le test
         </h2>
         <Col md={6}>
           <h3>Your test result</h3>

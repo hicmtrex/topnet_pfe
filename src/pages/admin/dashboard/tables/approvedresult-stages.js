@@ -2,22 +2,21 @@ import React, { useEffect, useState } from 'react';
 import { Card, Table } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import DashboardLayout from '../../../../components/layout/admin/dashboard-layout';
-import StagerTable from '../../../../components/layout/admin/tables/stage-table';
-import { getStagesList } from '../../../../store/stages/admin/stages-list';
 import Loader from '../../../../components/UI/loader';
 import { FaUserCog } from 'react-icons/fa';
-import Paginate from '../../../../components/UI/Paginate';
+import { getApprovedAnswers } from '../../../../store/questions/asnwers/get-approved';
+import ApproveTable from '../../../../components/layout/admin/tables/approve-table';
 
-const StageList = () => {
+const ApprovedStages = () => {
   const dispatch = useDispatch();
-  const { stages, loading, total } = useSelector((state) => state.stagesList);
-  const { success } = useSelector((state) => state.stageUpdate);
-  const [page, setPage] = useState(1);
+  const { approvedAnswers, loading } = useSelector(
+    (state) => state.approvedAnswers
+  );
 
   useEffect(() => {
-    dispatch(getStagesList(page));
-  }, [dispatch, success, page]);
-
+    dispatch(getApprovedAnswers());
+  }, [dispatch]);
+  console.log(approvedAnswers);
   return (
     <DashboardLayout>
       {loading ? (
@@ -35,32 +34,33 @@ const StageList = () => {
             <Table responsive hover className='table-nowrap'>
               <thead className='thead-light'>
                 <tr>
-                  <th scope='col'>Nom</th>
                   <th scope='col'>
-                    <span className='mx-4'>Email</span>
+                    <span>Nom</span>
                   </th>
                   <th scope='col'>
-                    <span className='mx-4'>Cin</span>
+                    <span>Domaine</span>
                   </th>
-                  <th scope='col'>Domaine</th>
-                  <th scope='col'>Téléphone</th>
-                  <th scope='col'>Statut</th>
+                  <th scope='col'>
+                    <span>Result</span>
+                  </th>
+                  <th scope='col'>Score</th>
+                  <th scope='col'>Date</th>
+                  <th scope='col'>Options</th>
 
                   <th />
                 </tr>
               </thead>
               <tbody>
-                {stages.map((stage) => (
-                  <StagerTable key={stage._id} stage={stage} />
+                {approvedAnswers.map((answer) => (
+                  <ApproveTable answer={answer} key={answer.id} />
                 ))}
               </tbody>
             </Table>
           </Card>
-          <Paginate page={page} total={total} setPage={setPage} />
         </>
       )}
     </DashboardLayout>
   );
 };
 
-export default StageList;
+export default ApprovedStages;

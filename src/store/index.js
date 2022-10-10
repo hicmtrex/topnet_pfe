@@ -24,6 +24,7 @@ import getStageTestSlice from './questions/quiz/getstage-answerSlice';
 import subjectListSlice from './subjects/subjects-list';
 import createSubjectSlice from './subjects/create-subject';
 import deleteSubjectSlice from './subjects/delete-subject';
+import approvedAnswersSlice from './questions/asnwers/get-approved';
 
 const reducers = combineReducers({
   stageLogin: loginStageSlice.reducer,
@@ -50,6 +51,8 @@ const reducers = combineReducers({
   stageQuestion: stageQuestionSlice.reducer,
   stageResult: saveStageResultSlice.reducer,
   stageTestResult: getStageTestSlice.reducer,
+  //asnwers
+  approvedAnswers: approvedAnswersSlice.reducer,
   //subjects
   subjectList: subjectListSlice.reducer,
   subjectCreate: createSubjectSlice.reducer,

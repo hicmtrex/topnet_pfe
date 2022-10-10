@@ -130,6 +130,11 @@ const Sidebar = () => {
                 </Link>
               </li>
             )}
+            <li className='nav-item '>
+              <Link className='nav-link p-5' to='/admin/approved-stages'>
+                <HiUsers className='me-2' size={'1.5rem'} /> Approuvé Stagiaires
+              </Link>
+            </li>
           </ul>
 
           <hr className='navbar-divider my-5 opacity-20' />
